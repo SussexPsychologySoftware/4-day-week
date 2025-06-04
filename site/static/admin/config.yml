@@ -2,105 +2,261 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "site/static/img" # Folder where user uploaded files should go
+media_folder: "site/static/img"
 public_folder: "img"
 
-collections: # A list of collections the CMS should be able to edit
-  - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Post" # Used in the UI, ie.: "New Post"
-    folder: "site/content/post" # The path to the folder where the documents are stored
-    path: "{{slug}}/index" # Each document is inside a folder with the slug name.
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Intro Blurb", name: "description", widget: "text"}
-      - {label: "Image", name: "image", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+collections:
   - name: "pages"
     label: "Pages"
     files:
+      # Homepage
       - file: "site/content/_index.md"
-        label: "Home Page"
+        label: "Homepage"
         name: "home"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Subtitle, name: subtitle, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: "Blurb", name: blurb, widget: object, fields: [
-              {label: "Heading", name: "heading", widget: string},
-              {label: "Text", name: "text", widget: "text"}]}
-          - {label: "Intro", name: intro, widget: object, fields: [
-              {label: "Heading", name: "heading", widget: string},
-              {label: "Text", name: "text", widget: "text"}]}
-          - {label: "Products", name: products, widget: list, fields: [
-              {label: "Image", name: "image", widget: "image"},
-              {label: "Text", name: "text", widget: "text"}]}
-          - {label: "Values", name: "values", widget: "object", fields: [
-              {label: "Heading", name: "heading", widget: string},
-              {label: "Text", name: "text", widget: "text"}]}
+          - {label: "Title", name: "title", widget: "string", default: "Sussex 4 Day Week"}
+          - {label: "Hero Image", name: "hero_image", widget: "image", required: false}
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Slogan", name: "slogan", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Feature Blocks"
+            name: "features"
+            widget: "list"
+            max: 3
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Link Text", name: "link_text", widget: "string", required: false}
+              - {label: "Link URL", name: "link_url", widget: "string", required: false}
+
+      # Success Stories
+      - file: "site/content/success-stories/_index.md"
+        label: "Success Stories"
+        name: "success_stories"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Success Stories"}
+          - {label: "Hero Image", name: "image", widget: "image", required: false}
+          - label: "Success Stories Carousel"
+            name: "success_stories"
+            widget: "list"
+            fields:
+              - {label: "Company Logo", name: "logo", widget: "image"}
+              - {label: "Company Name", name: "company", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Trial Results Carousel"
+            name: "trial_results"
+            widget: "list"
+            fields:
+              - {label: "Company Logo", name: "logo", widget: "image"}
+              - {label: "Company Name", name: "company", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Participating Employers"
+            name: "participating_employers"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string", default: "Participating Employers"}
+              - label: "Company Logos"
+                name: "logos"
+                widget: "list"
+                fields:
+                  - {label: "Company Name", name: "name", widget: "string"}
+                  - {label: "Logo", name: "logo", widget: "image"}
+          - label: "Research Findings"
+            name: "research_findings"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string", default: "Research Findings"}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Quote", name: "quote", widget: "text"}
+              - {label: "Attribution", name: "attribution", widget: "string", required: false}
+
+      # How It Works
+      - file: "site/content/how-it-works/_index.md"
+        label: "How It Works"
+        name: "how_it_works"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "How It Works"}
+          - {label: "Hero Image", name: "image", widget: "image", required: false}
+          - label: "Process Steps"
+            name: "process_steps"
+            widget: "list"
+            max: 4
+            fields:
+              - {label: "Icon/Logo", name: "icon", widget: "image"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Registration Section"
+            name: "registration"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string", default: "Register Here"}
+              - {label: "Description", name: "description", widget: "text", required: false}
+              - {label: "Button Text", name: "button_text", widget: "string", default: "Sign Up"}
+              - {label: "Form URL", name: "form_url", widget: "string", hint: "Link to sign-up form or page"}
+
+      # Control Employer
+      - file: "site/content/control-employer/_index.md"
+        label: "Be a Control Employer"
+        name: "control_employer"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Be a Control Employer"}
+          - {label: "Hero Image", name: "image", widget: "image", required: false}
+          - {label: "Introduction", name: "intro", widget: "text"}
+          - label: "Benefits"
+            name: "benefits"
+            widget: "list"
+            max: 3
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+      # Team
+      - file: "site/content/team/_index.md"
+        label: "The Team"
+        name: "team"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "The Team"}
+          - {label: "Hero Image", name: "image", widget: "image", required: false}
+          - label: "Team Members"
+            name: "team_members"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Photo", name: "photo", widget: "image", required: false}
+              - {label: "Bio", name: "bio", widget: "text"}
+              - {label: "Email", name: "email", widget: "string", required: false}
+
+      # Contact
       - file: "site/content/contact/_index.md"
-        label: "Contact Page"
+        label: "Get in Touch"
         name: "contact"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Logo, name: logo, widget: image}
-          - {label: Body, name: body, widget: markdown}
-          - label: Contact Entries
-            name: contact_entries
-            widget: list
+          - {label: "Title", name: "title", widget: "string", default: "Get in Touch"}
+          - {label: "Hero Image", name: "image", widget: "image", required: false}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Instructions", name: "instructions", widget: "text"}
+          - label: "Form Settings"
+            name: "form"
+            widget: "object"
             fields:
-              - label: Heading
-                name: heading
-                widget: string
-              - label: Text
-                name: text
-                widget: text
-      - file: "site/content/products/_index.md"
-        label: "Products Page"
-        name: "products"
+              - {label: "Form Name", name: "name", widget: "string", default: "contact"}
+              - {label: "Success Message", name: "success_message", widget: "text", default: "Thank you for your message!"}
+              - {label: "Submit Button Text", name: "submit_text", widget: "string", default: "Send Message"}
+
+      # Resources
+      - file: "site/content/resources/_index.md"
+        label: "Resources"
+        name: "resources"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
-          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-          - {label: Full_image, name: full_image, widget: image}
-          - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
-      - file: "site/content/values/_index.md"
-        label: "Values Page"
-        name: "values"
-        fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - label: Values
-            name: values
-            widget: list
+          - {label: "Title", name: "title", widget: "string", default: "Resources"}
+          - {label: "Hero Image", name: "image", widget: "image", required: false}
+          - label: "PDF Guide"
+            name: "pdf_guide"
+            widget: "object"
             fields:
-              - {label: Heading, name: heading, widget: string}
-              - {label: Text, name: text, widget: text}
-              - {label: Image, name: imageUrl, widget: image}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "PDF File", name: "file", widget: "file"}
+              - {label: "Download Button Text", name: "button_text", widget: "string", default: "Download Guide"}
+          - label: "Funders"
+            name: "funders"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Logo", name: "logo", widget: "image"}
+              - {label: "Website", name: "website", widget: "string", required: false}
+          - label: "Partner Organizations"
+            name: "partners"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Logo", name: "logo", widget: "image"}
+              - {label: "Website", name: "website", widget: "string", required: false}
+
+      # Sign-up Page
+      - file: "site/content/signup/_index.md"
+        label: "Sign-up Page"
+        name: "signup"
+        fields:
+          - { label: "Title", name: "title", widget: "string", default: "Join the Programme" }
+          - { label: "Hero Image", name: "image", widget: "image", required: false }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Body Content", name: "body", widget: "markdown" }
+          - label: "Form Settings"
+            name: "form"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Form Name", name: "name", widget: "string", default: "sussex-signup" }
+              - { label: "Success Message", name: "success_message", widget: "text", default: "Thank you for registering! We'll be in touch within 2 business days." }
+              - { label: "Submit Button Text", name: "submit_text", widget: "string", default: "REGISTER HERE" }
+
+  # News/Updates (Optional)
+  - name: "news"
+    label: "News & Updates"
+    folder: "site/content/news"
+    path: "{{slug}}/index"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # Site Settings
   - name: "site_settings"
     label: "Site Settings"
     files:
       - file: "site/data/footer.json"
-        label: Footer
-        name: footer
+        label: "Footer"
+        name: "footer"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Blurb, name: blurb, widget: text}
+          - {label: "Organization Name", name: "title", widget: "string", default: "Sussex 4 Day Week"}
+          - {label: "Footer Text", name: "blurb", widget: "text"}
+          - {label: "Contact Email", name: "email", widget: "string", required: false}
+          - label: "Social Links"
+            name: "social"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Platform", name: "platform", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Icon", name: "icon", widget: "image", required: false}
+
       - file: "site/hugo.toml"
-        label: Hugo Config
-        name: config
+        label: "Site Configuration"
+        name: "site_config"
         editor:
           preview: false
         fields:
-          - {label: Site Title for Browser Tab, name: title, widget: string}
-          - label: Params
-            name: params
-            widget: object
+          - {label: "Site Title", name: "title", widget: "string", default: "Sussex 4 Day Week"}
+          - label: "Site Parameters"
+            name: "params"
+            widget: "object"
             fields:
-              - label: Open Graph Image
-                name: images
-                widget: list
-                field: { label: Image, name: image, widget: image }
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Open Graph Image"
+                name: "images"
+                widget: "list"
+                field: {label: "Image", name: "image", widget: "image"}
+
+      # Navigation
+      - file: "site/data/navigation.json"
+        label: "Navigation"
+        name: "navigation"
+        fields:
+          - label: "Main Navigation"
+            name: "main"
+            widget: "list"
+            fields:
+              - {label: "Page Name", name: "name", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Order", name: "weight", widget: "number", default: 1}
