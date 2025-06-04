@@ -1,0 +1,22 @@
+---
+title: "The Team"
+image: "/img/team-hero.jpg"
+team_members:
+  - name: "Dr. Sarah Johnson"
+    role: "Lead Researcher & Project Director"
+    photo: "/img/sarah-johnson.jpg"
+    bio: "Dr. Johnson leads our research team with over 15 years of experience in workplace psychology and organizational behavior. She has published extensively on work-life balance and productivity."
+    email: "s.johnson@sussex4dayweek.co.uk"
+  - name: "Prof. Michael Chen"
+    role: "Data Analysis Specialist"
+    bio: "Specializing in statistical analysis and research methodology, Prof. Chen ensures the rigor and validity of our research findings."
+    email: "m.chen@sussex4dayweek.co.uk"
+  - name: "Dr. Emma Williams"
+    role: "Business Liaison Manager"
+    bio: "Dr. Williams works directly with participating organizations to ensure smooth implementation and data collection processes."
+    email: "e.williams@sussex4dayweek.co.uk"
+  - name: "James Robertson"
+    role: "Research Assistant"
+    bio: "James supports data collection and analysis while pursuing his PhD in organizational psychology."
+    email: "j.robertson@sussex4dayweek.co.uk"
+---

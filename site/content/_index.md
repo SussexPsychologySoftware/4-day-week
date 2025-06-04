@@ -1,20 +1,23 @@
 ---
-title: "Great coffee with a conscience"
-subtitle: Support sustainable farming while enjoying a cup
-image: /img/home-jumbotron.jpg
-blurb:
-    heading: Why Kaldi?
-    text: "Kaldi is the coffee store for everyone who believes that great coffee shouldn't just taste good, it should do good too. We source all of our beans directly from small scale sustainable farmers and make sure part of the profits are reinvested in their communities."
-intro:
-    heading: "What we offer"
-    text: "Kaldi is the ultimate spot for coffee lovers who want to learn about their java’s origin and support the farmers that grew it. We take coffee production, roasting and brewing seriously and we’re glad to pass that knowledge to anyone."
-products:
-    - image: img/illustrations-coffee.svg
-      text: "We sell green and roasted coffee beans that are sourced directly from independent farmers and farm cooperatives. We’re proud to offer a variety of coffee beans grown with great care for the environment and local communities. Check our post or contact us directly for current availability."
-    - image: /img/illustrations-coffee-gear.svg
-      text: "We offer a small, but carefully curated selection of brewing gear and tools for every taste and experience level. No matter if you roast your own beans or just bought your first french press, you’ll find a gadget to fall in love with in our shop."
-values:
-    heading: Our values
-    text: Coffee is an amazing part of human culture but it has a dark side too – one of colonialism and mindless abuse of natural resources and human lives. We want to turn this around and return the coffee trade to the drink’s exhilarating, empowering and unifying nature.
+title: "Sussex 4 Day Week"
+hero:
+  slogan: "HEALTHIER STAFF. HAPPIER TEAMS. MORE PRODUCTIVE WORKPLACES."
+  description: "Around the world, organisations of all different shapes and sizes are adopting a shorter working week. The benefits can be great – from improved workplace health and wellbeing, to enhanced staff recruitment and retention, to greater efficiency and productivity. If you want to know how it might work for your business, but don't know where to start, the Sussex 4 Day Week team are here to help."
+features:
+  - title: "Getting 4 Day Week Ready?"
+    description: "Speak to Dr Charlotte Rae, the UK’s leading quantitative researcher on the 4 day work week, about our consultancy and data-tracking service."
+    image: "/img/feature1.webp"
+    link_text: "FIND OUT MORE"
+    link_url: "/how-it-works"
+  - title: "Support for Employers"
+    description: "If you’re a UK-based business, you might be eligible to join our shorter working week trial, and monitor the effect on staff wellbeing, performance, and business outcomes.
+    You can also take part as a 'control' employer, without a change to working schedules."
+    image: "/img/feature2.webp"
+    link_text: "REGISTER HERE"
+    link_url: "/how-it-works"
+  - title: "Real Success Stories"
+    description: "See how local businesses have thrived with reduced working hours while maintaining productivity and improving employee satisfaction."
+    youtube_embed_src: "https://www.youtube.com/embed/ydhM_VwFnFM?si=rZU5nyPeQJhy8J_e"
+    link_text: "View Stories"
+    link_url: "/success-stories"
 ---
-

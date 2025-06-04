@@ -1,19 +1,11 @@
 ---
-title: "Contact"
-logo: "/img/logo.svg"
-contact_entries:
-  - heading: Location
-    text: "3153 Lynn Avenue, South San Francisco, California 94080"
-  - heading: Working hours
-    text: "Monday – Saturday: 9AM – 7PM We’re closed on Sundays"
+title: "Get in Touch"
+email: "info@sussex4dayweek.co.uk"
+instructions: "We'd love to hear from you! Whether you're an employer interested in participating, a researcher wanting to collaborate, or just curious about our findings, don't hesitate to reach out."
+form:
+  name: "contact"
+  success_message: "Thank you for your message! We'll get back to you within 2 business days."
+  submit_text: "Send Message"
 ---
 
-We’d love to get in touch with you and hear your ideas and
-questions. We strive to grow and improve constantly and your feedback
-is valuable for us.
-
-<h3 class="f4 b lh-title mb2">How can I get…?</h3>
-
-You can also use the form below for any inquiries about coffee
-availability, monthly subscriptions and scheduling a 1-on-1 session
-with our baristas. Don’t be shy, drop us a line!
+Ready to transform your workplace? Get in touch to learn how your organization can benefit from flexible working arrangements backed by rigorous research.
