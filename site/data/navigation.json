@@ -1,0 +1,44 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/",
+      "weight": 1
+    },
+    {
+      "name": "Success Stories",
+      "url": "/success-stories",
+      "weight": 2
+    },
+    {
+      "name": "How It Works",
+      "url": "/how-it-works",
+      "weight": 3
+    },
+    {
+      "name": "Join the Programme",
+      "url": "/signup",
+      "weight": 4
+    },
+    {
+      "name": "Be a Control Employer",
+      "url": "/control-employer",
+      "weight": 5
+    },
+    {
+      "name": "The Team",
+      "url": "/team",
+      "weight": 6
+    },
+    {
+      "name": "Get in Touch",
+      "url": "/contact",
+      "weight": 7
+    },
+    {
+      "name": "Resources",
+      "url": "/resources",
+      "weight": 8
+    }
+  ]
+}
