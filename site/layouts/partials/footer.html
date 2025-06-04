@@ -1,50 +1,39 @@
-<footer class="bg-black ph3 pv4 white">
-
-	<div class="mw7 center pt3">
-
-		<div class="measure-narrow center mb4">
-
-			<img src="/img/logo.svg" alt="Kaldi logo" class="db w4 center mb4 br0">
-			<p class="f3 lh-title light-gray b tc mb2">{{ .Site.Data.footer.title }}</p>
-			<p>{{ .Site.Data.footer.blurb }}</p>
-
-			{{ partial "newsletter-form" . }}
-
-		</div>
-
-		<div class="flex-ns justify-between">
-
-			<div>
-				<h3 class="f4 b lh-title mb1 primary">Kaldi</h3>
-				<ul class="mb3">
-					<li><a href="/" class="link">Home</a></li>
-					<li><a href="/products" class="link">Our products</a></li>
-					<li><a href="/values" class="link">About</a></li>
-					<li><a href="/post" class="link">Blog</a></li>
-					<li><a href="/contact" class="link">Contact</a></li>
-				</ul>
+<!-- UPDATED FOOTER PARTIAL -->
+<!-- File: site/layouts/partials/footer.html -->
+<footer class="bg-black white pv4">
+	<div class="center mw7 pv3 ph3">
+		<div class="flex-l justify-between">
+			<div class="w-100 w-50-l">
+				<h3 class="f4 b lh-title mb2">{{ .Site.Data.footer.title | default "Sussex 4 Day Week" }}</h3>
+				<p class="f6 lh-copy">
+					{{ .Site.Data.footer.blurb | default "Transforming work-life balance through evidence-based research." }}
+				</p>
+				{{ if .Site.Data.footer.email }}
+				<p class="f6">
+					<a href="mailto:{{ .Site.Data.footer.email }}" class="white link">{{ .Site.Data.footer.email }}</a>
+				</p>
+				{{ end }}
 			</div>
 
-			<div>
-				<h3 class="f4 b lh-title mb1 primary">Find out more</h3>
-				<ul class="mb3">
-					<li><a href="/post/jamaica-blue/" class="link">Latest offers</a></li>
-					<li><a href="/contact" class="link">Schedule an appointment</a></li>
-				</ul>
-			</div>
+			<div class="w-100 w-50-l tc tr-l">
+				{{ if .Site.Data.footer.social }}
+				<div class="mb3">
+					{{ range .Site.Data.footer.social }}
+					<a href="{{ .url }}" class="link white dib mr3">
+						{{ if .icon }}
+						<img src="{{ .icon }}" alt="{{ .platform }}" class="w2 h2" />
+						{{ else }}
+						{{ .platform }}
+						{{ end }}
+					</a>
+					{{ end }}
+				</div>
+				{{ end }}
 
-			<div>
-				<h3 class="f4 b lh-title mb2 primary">Social media</h3>
-				<ul class="mhn2">
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-facebook" "alt" "Kaldi on Facebook") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-twitter" "alt" "Kaldi on Twitter") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-instagram" "alt" "Kaldi on Instagram") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-vimeo" "alt" "Kaldi on Vimeo") }}
-				</ul>
+				<p class="f6 gray">
+					© {{ now.Format "2006" }} Sussex 4 Day Week Research Project
+				</p>
 			</div>
-
 		</div>
 	</div>
-
 </footer>
-

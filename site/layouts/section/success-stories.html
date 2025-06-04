@@ -1,0 +1,163 @@
+{{ define "main" }}
+
+<div class="ph3 bg-off-white min-vh-100">
+    <div class="center mw7 pv4">
+
+        <!-- Page Header -->
+        <div class="tc pb4">
+            <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
+            {{ end }}
+        </div>
+
+        <!-- Success Stories Carousel -->
+        {{ if .Params.success_stories }}
+        <div class="pb5">
+            <h2 class="f2 b lh-title mb4 tc">Success Stories</h2>
+
+            <div class="carousel-container relative">
+                <div class="carousel-wrapper overflow-hidden">
+                    <div class="carousel-track flex" id="success-carousel">
+                        {{ range .Params.success_stories }}
+                        {{ if .company }}
+                        <div class="carousel-slide flex-shrink-0 w-100 w-50-m w-third-l pa2">
+                            <div class="bg-white pa4 br2 ba b--light-gray" style="min-height: 350px;">
+                                {{ if .logo }}
+                                <div class="tc mb3">
+                                    <img src="{{ .logo }}" alt="{{ .company }}" class="w3 h3" style="object-fit: contain;" />
+                                </div>
+                                {{ end }}
+                                <h3 class="f4 b lh-title mb3 tc primary">{{ .company }}</h3>
+                                <blockquote class="f5 lh-copy mb3 i gray">"{{ .quote }}"</blockquote>
+                                <p class="f6 gray tc">— {{ .attribution }}</p>
+                            </div>
+                        </div>
+                        {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-btn carousel-prev absolute left-0 top-50 bg-primary white pa2 br2 bn" onclick="moveCarousel('success-carousel', -1)">‹</button>
+                <button class="carousel-btn carousel-next absolute right-0 top-50 bg-primary white pa2 br2 bn" onclick="moveCarousel('success-carousel', 1)">›</button>
+            </div>
+
+        </div>
+        {{ end }}
+
+        <!-- Trial Results -->
+        {{ if .Params.trial_results.logos }}
+        <div class="pv4 bg-grey-1">
+            <div class="center mw7 ph3">
+                <h2 class="f2 b lh-title mb4 tc">{{ .Params.trial_results.heading | default "Trial Results" }}</h2>
+
+                <div class="cf">
+                    {{ range .Params.trial_results.logos }}
+                    <div class="fl w-100 w-50-m w-third-l pa2">
+                        <div class="bg-white pa4 br2 ba b--light-gray" style="min-height: 250px;">
+                            {{ if .logo }}
+                            <div class="tc mb3">
+                                <img src="{{ .logo }}" alt="{{ .company }}" class="w3 h3" style="object-fit: contain;" />
+                            </div>
+                            {{ end }}
+                            <h3 class="f4 b lh-title mb2 tc primary">{{ .company }}</h3>
+                            <p class="f5 lh-copy mb2"><strong>Who are they?</strong> {{ .who }}</p>
+                            <p class="f5 lh-copy mb3"><strong>What did they learn?</strong> {{ .learnings }}</p>
+                            {{ if .link }}
+                            <div class="tc">
+                                <a href="{{ .link }}" class="f6 link primary">Visit website</a>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Participating Employers -->
+        {{ if .Params.participating_employers.logos }}
+        <div class="pv4">
+            <h2 class="f2 b lh-title mb4 tc">{{ .Params.participating_employers.heading }}</h2>
+            <div class="cf">
+                {{ range .Params.participating_employers.logos }}
+                <div class="fl w-20-l w-25-m w-third pa2">
+                    <div class="tc">
+                        <img src="{{ .logo }}" alt="{{ .name }}" class="w-100 h3" style="object-fit: contain;" />
+                        <p class="f6 gray mt2">{{ .name }}</p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+    </div>
+</div>
+
+<!-- Carousel JavaScript -->
+<script>
+    let carouselPositions = {};
+
+    function moveCarousel(carouselId, direction) {
+        const carousel = document.getElementById(carouselId);
+        const slides = carousel.children;
+        const slideWidth = slides[0].offsetWidth;
+
+        if (!carouselPositions[carouselId]) {
+            carouselPositions[carouselId] = 0;
+        }
+
+        carouselPositions[carouselId] += direction * slideWidth;
+
+        // Prevent going beyond bounds
+        const maxPosition = 0;
+        const minPosition = -(slideWidth * (slides.length - 3)); // Show 3 slides at once
+
+        if (carouselPositions[carouselId] > maxPosition) {
+            carouselPositions[carouselId] = maxPosition;
+        }
+        if (carouselPositions[carouselId] < minPosition) {
+            carouselPositions[carouselId] = minPosition;
+        }
+
+        carousel.style.transform = `translateX(${carouselPositions[carouselId]}px)`;
+    }
+
+    // Auto-play carousel (optional)
+    setInterval(() => {
+        moveCarousel('success-carousel', 1);
+    }, 5000);
+</script>
+
+<!-- Carousel CSS -->
+<style>
+    .carousel-container {
+        position: relative;
+    }
+
+    .carousel-track {
+        transition: transform 0.3s ease;
+    }
+
+    .carousel-btn {
+        cursor: pointer;
+        z-index: 10;
+        transform: translateY(-50%);
+    }
+
+    .carousel-btn:hover {
+        opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-slide {
+            width: 100% !important;
+        }
+    }
+</style>
+
+{{ end }}

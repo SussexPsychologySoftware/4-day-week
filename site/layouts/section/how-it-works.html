@@ -1,0 +1,54 @@
+<!-- HOW IT WORKS PAGE LAYOUT -->
+<!-- File: site/layouts/section/how-it-works.html -->
+{{ define "main" }}
+
+<div class="ph3 bg-off-white">
+    <div class="center mw7 pv3">
+        <!-- Page Header -->
+        <div class="tc pv4">
+            <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
+            {{ end }}
+        </div>
+
+        <!-- Process Steps -->
+        {{ if .Params.process_steps }}
+        <div class="pv4">
+            <div class="flex-l flex-wrap justify-center">
+                {{ range $index, $step := .Params.process_steps }}
+                <div class="w-100 w-50-m w-25-l ph3 pb4 tc">
+                    <div class="bg-white pa4 br2 shadow-1 h-100 flex flex-column">
+                        {{ if .icon }}
+                        <img src="{{ .icon }}" alt="{{ .title }}" class="w3 h3 db center mb3" />
+                        {{ end }}
+                        <div class="bg-primary white br-100 w2 h2 flex items-center justify-center f4 b mb3 center">
+                            {{ add $index 1 }}
+                        </div>
+                        <h3 class="f3 b lh-title mb2">{{ .title }}</h3>
+                        <p class="f5 lh-copy gray flex-auto">{{ .description }}</p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Registration Section -->
+        {{ if .Params.registration }}
+        <div class="pv5 bg-primary white tc">
+            <div class="center mw6 ph3">
+                <h2 class="f2 b lh-title mb3">{{ .Params.registration.heading }}</h2>
+                {{ if .Params.registration.description }}
+                <p class="f4 mb4">{{ .Params.registration.description }}</p>
+                {{ end }}
+                <a href="{{ .Params.registration.form_url }}" class="btn bg-white primary f4 link br1 ph4 pv3 mb3 dib b">
+                    {{ .Params.registration.button_text }}
+                </a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

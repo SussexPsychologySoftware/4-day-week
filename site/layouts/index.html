@@ -1,13 +1,56 @@
 {{ define "main" }}
 
-{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
+<!-- Hero Section -->
+{{ if .Params.hero }}
+<div class="hero bg-grey-1 pv5 pv6-l ph3">
+    <div class="mw7 center ph3">
+        <div class="db mb3">
+            <div class="mw7 relative bg-fix-primary mb3">
+                {{ if .Params.hero_image }}
+                <img src="{{ .Params.hero_image }}" class="w-100" />
+                {{ end }}
+            </div>
+            <div class="mw7 center ph3">
+                <h1 class="f3 f2-l b di lh-title mb3 mw6 relative z-5">
+                    {{ .Params.hero.slogan }}
+                </h1>
+                <p class="b f5 mb10 mw6">{{ .Params.hero.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
 
-{{ partial "short-text" .Params.blurb}}
+<!-- Feature Blocks Section -->
+{{ if .Params.features }}
+<div class="pv5 pv6-l">
+    <div class="mw7 center">
+        <h2 class="f2 b lh-title mb2 tc">How We're Making a Difference</h2>
 
-{{ partial "2-up" .Params }}
+        {{ range $index, $feature := .Params.features }}
+        <div class="flex-l mhn2-l pt3 pb4-l {{ if modBool $index 2 }}flex-row-reverse-l{{ end }}">
+            <div class="w-40-l ph2-l">
+                {{ if $feature.image }}
+                <img src="{{ $feature.image }}" alt="{{ $feature.title }}" class="w-100 db mb3" />
+                {{ else if $feature.youtube_embed_src }}
+                <iframe width="560" height="315" src="{{ $feature.youtube_embed_src }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {{ end }}
 
-{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
+            </div>
+            <div class="w-60-l ph2-l">
+                <h3 class="f3 b lh-title mb1">{{ $feature.title }}</h3>
+                <p>{{ $feature.description }}</p>
+                {{ if $feature.link_url }}
+                <a href="{{ $feature.link_url }}" class="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib">
+                    {{ $feature.link_text | default "Learn More" }}
+                </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
 
-{{ partial "blog" . }}
+    </div>
+</div>
+{{ end }}
 
 {{ end }}

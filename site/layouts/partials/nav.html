@@ -1,27 +1,33 @@
-<nav data-nav class="flex justify-between items-center center bg-white divider-grey relative">
+{{ $currentPage := . }}
+{{ $currentURL := $currentPage.RelPermalink }}
 
-	<!-- Logo -->
+<nav class="flex justify-between bb b--white-10">
 	<a href="/" class="pa3 db mr4 h-100 w3 flex-none">
-		<img src="/img/logo.svg" alt="Kaldi logo" class="br0 db mb0 w-100"/>
+		<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="br0 db mb0 w-100"/>
 	</a>
+	<ul class="flex b grey-3">
+		{{/* Home Link */}}
+		<li><a href="/" class="pa3 no-underline db {{ if .IsHome }}bg-primary white{{ else }}grey-3{{ end }}">Home</a></li>
 
-	<!-- Primary Nav -->
-	<div data-mobile-menu class="mobile-menu-container">
-		<svg viewBox="0 0 100 80" width="40" height="25" class="mobile-menu-icon">
-			<rect class="menu-icon-top mobile-menu-inner" width="100" height="8"></rect>
-			<rect class="menu-icon-middle mobile-menu-inner" y="30" width="100" height="8"></rect>
-			<rect class="menu-icon-bottom mobile-menu-inner" y="60" width="100" height="8"></rect>
-		</svg>
-	</div>
+		{{/* Success Stories */}}
+		<li><a href="/success-stories/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "success-stories") (hasPrefix $currentURL "/success-stories/") }}bg-primary white{{ else }}grey-3{{ end }}">Success Stories</a></li>
 
-	<ul class="flex b grey-3 nav-menu">
-		<li><a href="/products" class="pa3 no-underline db">Products</a></li>
+		{{/* How It Works */}}
+		<li><a href="/how-it-works/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "how-it-works") (hasPrefix $currentURL "/how-it-works/") }}bg-primary white{{ else }}grey-3{{ end }}">How It Works</a></li>
 
-		<li><a href="/values" class="pa3 no-underline db">Values</a></li>
+		{{/* Join the Programme */}}
+		<li><a href="/signup/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "signup") (hasPrefix $currentURL "/signup/") }}bg-primary white{{ else }}grey-3{{ end }}">Join the Programme</a></li>
 
-		<li><a href="/post" class="pa3 no-underline db">Blog</a></li>
+		{{/* Be a Control Employer */}}
+		<li><a href="/control-employer/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "control-employer") (hasPrefix $currentURL "/control-employer/") }}bg-primary white{{ else }}grey-3{{ end }}">Be a Control Employer</a></li>
 
-		<li><a href="/contact" class="pa3 no-underline db">Contact</a></li>
+		{{/* The Team */}}
+		<li><a href="/team/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "team") (hasPrefix $currentURL "/team/") }}bg-primary white{{ else }}grey-3{{ end }}">The Team</a></li>
+
+		{{/* Get in Touch */}}
+		<li><a href="/contact/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "contact") (hasPrefix $currentURL "/contact/") }}bg-primary white{{ else }}grey-3{{ end }}">Get in Touch</a></li>
+
+		{{/* Resources */}}
+		<li><a href="/resources/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "resources") (hasPrefix $currentURL "/resources/") }}bg-primary white{{ else }}grey-3{{ end }}">Resources</a></li>
 	</ul>
-
 </nav>

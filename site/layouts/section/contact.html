@@ -1,23 +1,40 @@
+<!-- UPDATED CONTACT PAGE LAYOUT -->
+<!-- File: site/layouts/section/contact.html -->
 {{ define "main" }}
 
 <div class="ph3 bg-off-white">
 	<div class="center mw6 pv3">
-
-		<img src="{{ .Params.logo }}" alt="" class="db w4 center pv4">
-
-		{{ .Content }}
-
-		<div class="flex-ns mb3">
-	        	{{ range .Params.contact_entries }}
-				<div>
-					<h4 class="f4 b lh-title mb2 primary">{{ .heading }}</h4>
-					<p>{{ .text }}</p>
-				</div>
+		<!-- Page Header -->
+		<div class="tc pv4">
+			<h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+			{{ if .Params.image }}
+			<img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
 			{{ end }}
 		</div>
 
-		{{ partial "contact-form" . }}
+		<!-- Contact Information -->
+		<div class="tc pv3">
+			{{ if .Params.email }}
+			<div class="mb4">
+				<h3 class="f3 b lh-title mb2 primary">Email Us</h3>
+				<a href="mailto:{{ .Params.email }}" class="f4 link primary">{{ .Params.email }}</a>
+			</div>
+			{{ end }}
 
+			{{ if .Params.instructions }}
+			<div class="mb4">
+				<p class="f4 lh-copy measure center">{{ .Params.instructions }}</p>
+			</div>
+			{{ end }}
+		</div>
+
+		<!-- Page Content -->
+		<div class="lh-copy measure center">
+			{{ .Content }}
+		</div>
+
+		<!-- Contact Form -->
+		{{ partial "sussex-contact-form" . }}
 	</div>
 </div>
 
