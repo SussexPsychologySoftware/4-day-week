@@ -1,61 +1,50 @@
-<!-- SIGN-UP PAGE LAYOUT -->
-<!-- File: site/layouts/section/signup.html -->
 {{ define "main" }}
 
-<div class="ph3 bg-off-white">
-    <div class="center mw6 pv3">
-        <!-- Page Header -->
-        <div class="tc pv4">
+<div class="ph3 bg-off-white min-vh-100">
+    <div class="center mw6 pv4">
+        <div class="tc pb4">
             <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
             {{ if .Params.image }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
             {{ end }}
         </div>
 
-        <!-- Introduction -->
         {{ if .Params.intro }}
         <div class="tc pv3">
             <p class="f4 lh-copy measure center">{{ .Params.intro }}</p>
         </div>
         {{ end }}
 
-        <!-- Page Content -->
         <div class="lh-copy measure center mb4">
             {{ .Content }}
         </div>
 
-        <!-- Sign-up Form -->
-        <div class="bg-white pa4 br2 shadow-1">
+        <div class="bg-white pa4 br2 ba b--light-gray">
             <h2 class="f2 b lh-title mb4 tc primary">Join the University of Sussex Programme</h2>
 
             <form name="sussex-signup" method="POST" netlify>
                 <input type="hidden" name="form-name" value="sussex-signup" />
 
-                <!-- Name -->
                 <div class="mb3">
                     <label for="name" class="f5 db mb2 b">Name *</label>
                     <input type="text" id="name" name="name" class="w-100 f5 pv2 ph3 border-box ba br2" required />
                 </div>
 
-                <!-- Email -->
                 <div class="mb3">
                     <label for="email" class="f5 db mb2 b">Email Address *</label>
                     <input type="email" id="email" name="email" class="w-100 f5 pv2 ph3 border-box ba br2" required />
                 </div>
 
-                <!-- Job Title -->
                 <div class="mb3">
                     <label for="job_title" class="f5 db mb2 b">Job Title *</label>
                     <input type="text" id="job_title" name="job_title" class="w-100 f5 pv2 ph3 border-box ba br2" required />
                 </div>
 
-                <!-- Company Name -->
                 <div class="mb3">
                     <label for="company_name" class="f5 db mb2 b">Company Name *</label>
                     <input type="text" id="company_name" name="company_name" class="w-100 f5 pv2 ph3 border-box ba br2" required />
                 </div>
 
-                <!-- Number of Employees -->
                 <div class="mb3">
                     <label for="employee_count" class="f5 db mb2 b">Number of Employees *</label>
                     <select id="employee_count" name="employee_count" class="w-100 f5 pv2 ph3 border-box ba br2" required>
@@ -69,13 +58,11 @@
                     </select>
                 </div>
 
-                <!-- Company Location -->
                 <div class="mb3">
                     <label for="company_location" class="f5 db mb2 b">Company Location *</label>
                     <input type="text" id="company_location" name="company_location" class="w-100 f5 pv2 ph3 border-box ba br2" placeholder="City, County or Postcode" required />
                 </div>
 
-                <!-- Working Schedule Type -->
                 <div class="mb3">
                     <label class="f5 db mb2 b">What type of new working schedule are you considering? *</label>
                     <div class="mt2">
@@ -110,13 +97,11 @@
                     </div>
                 </div>
 
-                <!-- Additional Information -->
                 <div class="mb3">
                     <label for="additional_info" class="f5 db mb2 b">Anything else you'd like to tell us?</label>
                     <textarea id="additional_info" name="additional_info" rows="4" class="w-100 f5 pv2 ph3 border-box ba br2" placeholder="Tell us about your current working arrangements, any concerns, or questions you might have..."></textarea>
                 </div>
 
-                <!-- Newsletter Subscription -->
                 <div class="mb4">
                     <label class="db f5 mb2">
                         <input type="checkbox" name="newsletter_signup" value="yes" class="mr2" />
@@ -124,14 +109,12 @@
                     </label>
                 </div>
 
-                <!-- Submit Button -->
                 <div class="tc">
-                    <button type="submit" class="btn bg-primary white f3 link br1 ph5 pv3 b">
+                    <button type="submit" class="bg-primary white f3 link br1 ph5 pv3 b no-underline">
                         REGISTER HERE
                     </button>
                 </div>
 
-                <!-- Privacy Notice -->
                 <div class="mt4 f6 gray tc">
                     <p>By submitting this form, you agree to the University of Sussex processing your data for research purposes. We will not share your information with third parties.</p>
                 </div>

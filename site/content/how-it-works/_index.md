@@ -4,20 +4,24 @@ image: "/img/how-it-works-hero.jpg"
 process_steps:
   - icon: "/img/icon-contact.svg"
     title: "Contact Us"
-    description: "Reach out to discuss your organization's interest in participating in our research study."
+    description: "Email Trial Consultant Dr Charlotte Rae for more info: "
+    email: "Charlotte@sussex4dayweek.co.uk"
   - icon: "/img/icon-meeting.svg"
     title: "Meet for a Chat"
-    description: "We'll arrange a consultation to understand your business needs and explain the research process."
+    description: "We'll explain what taking part involves, and would love to hear about your aims and priorities"
   - icon: "/img/icon-trial.svg"
     title: "Run Trial"
-    description: "Implement a structured four-day work week trial with our guidance and support throughout the process."
+    description: "We'll help you prepare for the switch to a 4 day week, and measure what changes"
   - icon: "/img/icon-report.svg"
     title: "Custom Report"
-    description: "Receive a detailed analysis of your trial results with actionable insights and recommendations."
+    description: "Once your trial has finished, we'll write a custom report on what changed in your organisation"
 
 registration:
   heading: "Register Here"
-  description: "Ready to transform your workplace? Join our growing community of forward-thinking employers."
-  button_text: "Sign Up Now"
-  form_url: "/contact"
+  description: "We help employers to trial a shorter working week, and measure the effects on staff wellbeing and work experience. 
+      If you’re not yet ready for a shorter working week, the programme also offers the option to take part in productivity training and research without a change to working hours, as a ‘control’ employer.
+      Your organisation can be based anywhere in the UK, and doesn't need to be local to Sussex.
+      Complete our form below, and we'll send further information about our employer support programme."
+  button_text: "REGISTER HERE"
+  form_url: "/signup"
 ---

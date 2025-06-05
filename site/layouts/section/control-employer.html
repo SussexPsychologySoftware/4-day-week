@@ -1,31 +1,30 @@
-<!-- CONTROL EMPLOYER PAGE LAYOUT -->
-<!-- File: site/layouts/section/control-employer.html -->
 {{ define "main" }}
 
-<div class="ph3 bg-off-white">
-    <div class="center mw7 pv3">
-        <!-- Page Header -->
-        <div class="tc pv4">
+<div class="ph3 bg-off-white min-vh-100">
+    <div class="center mw7 pv4">
+        <div class="tc pb4">
             <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
             {{ if .Params.image }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
             {{ end }}
         </div>
 
-        <!-- Introduction -->
         {{ if .Params.intro }}
         <div class="tc pv4">
             <p class="f3 lh-copy mw6 center">{{ .Params.intro }}</p>
         </div>
         {{ end }}
 
-        <!-- Benefits -->
+        <div class="lh-copy measure center mb4">
+            {{ .Content }}
+        </div>
+
         {{ if .Params.benefits }}
         <div class="pv4">
-            <div class="flex-l flex-wrap">
+            <div class="cf">
                 {{ range .Params.benefits }}
-                <div class="w-100 w-third-l ph3 pb4">
-                    <div class="bg-white pa4 br2 shadow-1 h-100 tc">
+                <div class="fl w-100 w-50-m w-third-l pa3">
+                    <div class="bg-white pa4 br2 ba b--light-gray tc" style="min-height: 200px;">
                         <h3 class="f3 b lh-title mb3 primary">{{ .title }}</h3>
                         <p class="f5 lh-copy gray">{{ .description }}</p>
                     </div>
@@ -35,11 +34,10 @@
         </div>
         {{ end }}
 
-        <!-- Call to Action -->
         <div class="tc pv5">
             <h2 class="f2 b lh-title mb3">Ready to Participate?</h2>
-            <a href="/contact" class="btn bg-primary white f4 link br1 ph4 pv3 mb3 dib">
-                Get in Touch
+            <a href="/signup" class="bg-primary white f4 link br1 ph4 pv3 mb3 dib no-underline">
+                Get Started
             </a>
         </div>
     </div>

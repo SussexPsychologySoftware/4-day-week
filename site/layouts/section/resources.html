@@ -1,67 +1,45 @@
-<!-- RESOURCES PAGE LAYOUT -->
-<!-- File: site/layouts/section/resources.html -->
 {{ define "main" }}
 
-<div class="ph3 bg-off-white">
-    <div class="center mw7 pv3">
-        <!-- Page Header -->
-        <div class="tc pv4">
+<div class="ph3 bg-off-white min-vh-100">
+    <div class="center mw7 pv4">
+        <div class="tc pb4">
             <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
             {{ if .Params.image }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
             {{ end }}
         </div>
 
-        <!-- PDF Guide -->
+        <div class="lh-copy measure center mb4">
+            {{ .Content }}
+        </div>
+
         {{ if .Params.pdf_guide }}
         <div class="pv4 tc">
-            <div class="bg-white pa4 br2 shadow-1 mw6 center">
+            <div class="bg-white pa4 br2 ba b--light-gray mw6 center">
                 <h2 class="f2 b lh-title mb3">{{ .Params.pdf_guide.title }}</h2>
                 <p class="f4 lh-copy mb4">{{ .Params.pdf_guide.description }}</p>
-                <a href="{{ .Params.pdf_guide.file }}" class="btn bg-primary white f4 link br1 ph4 pv3 mb3 dib" download>
+                <a href="{{ .Params.pdf_guide.file }}" class="bg-primary white f4 link br1 ph4 pv3 mb3 dib no-underline" download>
                     {{ .Params.pdf_guide.button_text }}
                 </a>
             </div>
         </div>
         {{ end }}
 
-        <!-- Funders -->
-        {{ if .Params.funders }}
-        <div class="pv4">
-            <h2 class="f2 b lh-title mb4 tc">Our Funders</h2>
-            <div class="flex flex-wrap justify-center">
-                {{ range .Params.funders }}
-                <div class="w-50-m w-third-l pa3 tc">
-                    {{ if .website }}
-                    <a href="{{ .website }}" class="link">
-                        {{ end }}
-                        <img src="{{ .logo }}" alt="{{ .name }}" class="w-100 h3 db center mb2" style="object-fit: contain;" />
-                        <p class="f5 gray">{{ .name }}</p>
-                        {{ if .website }}
-                    </a>
-                    {{ end }}
-                </div>
-                {{ end }}
-            </div>
-        </div>
+        {{ if .Params.bottom_text }}
+        <p class="f4 lh-copy mb4">{{ .Params.bottom_text }}</p>
         {{ end }}
 
-        <!-- Partner Organizations -->
         {{ if .Params.partners }}
         <div class="pv4 bg-grey-1">
             <div class="center mw7 ph3">
-                <h2 class="f2 b lh-title mb4 tc">Partner Organizations</h2>
-                <div class="flex flex-wrap justify-center">
+                <div class="cf">
                     {{ range .Params.partners }}
-                    <div class="w-50-m w-third-l pa3 tc">
-                        {{ if .website }}
-                        <a href="{{ .website }}" class="link">
-                            {{ end }}
-                            <img src="{{ .logo }}" alt="{{ .name }}" class="w-100 h3 db center mb2" style="object-fit: contain;" />
-                            <p class="f5 gray">{{ .name }}</p>
-                            {{ if .website }}
-                        </a>
-                        {{ end }}
+                    <div class="fl w-50-m w-third-l pa3 tc">
+                        <img src="{{ .logo }}" alt="{{ .name }}" class="w-100 h3 db center mb2" style="object-fit: contain;" />
+                        <p>The
+                            <a href="{{ .website }}" class="link">{{ .name }}</a> {{ .text }}
+                            <a href="{{ .extra_link }}" class="link">{{ .redirect_text }}</a>
+                        </p>
                     </div>
                     {{ end }}
                 </div>

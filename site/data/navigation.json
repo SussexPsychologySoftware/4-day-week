@@ -16,28 +16,28 @@
       "weight": 3
     },
     {
-      "name": "Join the Programme",
-      "url": "/signup",
-      "weight": 4
-    },
-    {
       "name": "Be a Control Employer",
       "url": "/control-employer",
-      "weight": 5
+      "weight": 4
     },
     {
       "name": "The Team",
       "url": "/team",
-      "weight": 6
+      "weight": 5
     },
     {
-      "name": "Get in Touch",
+      "name": "Contact Us",
       "url": "/contact",
-      "weight": 7
+      "weight": 6
     },
     {
       "name": "Resources",
       "url": "/resources",
+      "weight": 7
+    },
+    {
+      "name": "Join the Programme",
+      "url": "/signup",
       "weight": 8
     }
   ]

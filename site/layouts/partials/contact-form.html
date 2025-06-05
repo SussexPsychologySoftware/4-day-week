@@ -1,30 +1,28 @@
-<!-- SUSSEX CONTACT FORM PARTIAL -->
-<!-- File: site/layouts/partials/sussex-contact-form.html -->
-<div class="bg-white pa4 br2 shadow-1 mt4">
-  <h3 class="f3 b lh-title mb3 tc primary">Send us a message</h3>
+<div class="bg-white pa4 br2 ba b--light-gray mt4">
+  <h3 class="f3 b lh-title mb3 tc primary">Contact Us</h3>
 
   <form name="{{ .Params.form.name | default "contact" }}" method="POST" netlify>
-  <input type="hidden" name="form-name" value="{{ .Params.form.name | default "contact" }}" />
+    <input type="hidden" name="form-name" value="{{ .Params.form.name | default "contact" }}" />
 
-  <div class="mb3">
-    <label for="name" class="f5 db mb2 b">Name *</label>
-    <input type="text" id="name" name="name" class="w-100 f5 pv2 ph3 border-box ba br2" required />
-  </div>
+    <div class="mb3">
+      <label for="contact-name" class="f5 db mb2 b">Name *</label>
+      <input type="text" id="contact-name" name="name" class="w-100 f5 pv2 ph3 border-box ba br2" required />
+    </div>
 
-  <div class="mb3">
-    <label for="email" class="f5 db mb2 b">Email *</label>
-    <input type="email" id="email" name="email" class="w-100 f5 pv2 ph3 border-box ba br2" required />
-  </div>
+    <div class="mb3">
+      <label for="contact-email" class="f5 db mb2 b">Email *</label>
+      <input type="email" id="contact-email" name="email" class="w-100 f5 pv2 ph3 border-box ba br2" required />
+    </div>
 
-  <div class="mb3">
-    <label for="message" class="f5 db mb2 b">Message *</label>
-    <textarea id="message" name="message" rows="5" class="w-100 f5 pv2 ph3 border-box ba br2" required></textarea>
-  </div>
+    <div class="mb3">
+      <label for="contact-message" class="f5 db mb2 b">Message *</label>
+      <textarea id="contact-message" name="message" rows="5" class="w-100 f5 pv2 ph3 border-box ba br2" required></textarea>
+    </div>
 
-  <div class="tc">
-    <button type="submit" class="btn bg-primary white f4 link br1 ph4 pv3 b">
-      {{ .Params.form.submit_text | default "Send Message" }}
-    </button>
-  </div>
+    <div class="tc">
+      <button type="submit" class="bg-primary white f4 link br1 ph4 pv3 b no-underline">
+        {{ .Params.form.submit_text | default "Send Message" }}
+      </button>
+    </div>
   </form>
 </div>

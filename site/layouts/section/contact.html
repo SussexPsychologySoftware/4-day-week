@@ -1,11 +1,9 @@
-<!-- UPDATED CONTACT PAGE LAYOUT -->
-<!-- File: site/layouts/section/contact.html -->
 {{ define "main" }}
 
-<div class="ph3 bg-off-white">
-	<div class="center mw6 pv3">
+<div class="ph3 bg-off-white min-vh-100">
+	<div class="center mw6 pv4">
 		<!-- Page Header -->
-		<div class="tc pv4">
+		<div class="tc pb4">
 			<h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
 			{{ if .Params.image }}
 			<img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
@@ -16,7 +14,7 @@
 		<div class="tc pv3">
 			{{ if .Params.email }}
 			<div class="mb4">
-				<h3 class="f3 b lh-title mb2 primary">Email Us</h3>
+				<p class="f3 b lh-title mb2 primary">Email: </p>
 				<a href="mailto:{{ .Params.email }}" class="f4 link primary">{{ .Params.email }}</a>
 			</div>
 			{{ end }}
@@ -29,12 +27,12 @@
 		</div>
 
 		<!-- Page Content -->
-		<div class="lh-copy measure center">
+		<div class="lh-copy measure center mb4">
 			{{ .Content }}
 		</div>
 
 		<!-- Contact Form -->
-		{{ partial "sussex-contact-form" . }}
+		{{ partial "contact-form" . }}
 	</div>
 </div>
 
