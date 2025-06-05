@@ -1,7 +1,7 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: SussexPsychologySoftware/4-day-week
   branch: main
-
 media_folder: "site/static/img"
 public_folder: "img"
 
