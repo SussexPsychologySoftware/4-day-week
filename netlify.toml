@@ -1,9 +1,9 @@
 [build.environment]
-  NODE_VERSION = "18.20.8"
-  HUGO_VERSION = "0.125.0"
+NODE_VERSION = "18.20.8"
+HUGO_VERSION = "0.125.0"
 
 [build]
-  command = "npm run build:webpack && hugo -d dist -s site -v"
+  command = "npm run build"
   publish = "dist"
 
 [context.deploy-preview]
