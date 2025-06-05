@@ -1,7 +1,6 @@
 ---
 title: "Join the Programme"
 intro: "Ready to explore the benefits of flexible working? Join our research programme and be part of the movement transforming workplaces across Sussex and beyond."
-image: "/img/signup-hero.jpg"
 ---
 
 Take the next step towards a healthier, more productive workplace. Our team will guide you through the process, from initial consultation to implementation and results analysis.

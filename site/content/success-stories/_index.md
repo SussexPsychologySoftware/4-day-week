@@ -1,6 +1,5 @@
 ---
 title: "SUCCESS STORIES"
-image: "/img/success-hero.jpg"
 success_stories:
   - logo: "/img/company_logos/archangelsarchitects.png"
     company: "ARCHANGELS ARCHITECTS"

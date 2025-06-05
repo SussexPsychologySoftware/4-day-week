@@ -1,6 +1,5 @@
 ---
 title: "Resources"
-image: "/img/resources-hero.jpg"
 pdf_guide:
   title: "DOWNLOAD OUR FREE GUIDE"
   description: "Thinking about how a 4 day week might work for your business, but no idea where to start? We’ve got you covered with our guide to getting “4 day week ready”. If you haven’t already, sign up to our mailing list below to download our free guide with everything you need to know before getting started with a trial of the 4 day week!"

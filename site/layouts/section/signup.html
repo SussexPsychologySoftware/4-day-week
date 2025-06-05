@@ -4,9 +4,6 @@
     <div class="center mw6 pv4">
         <div class="tc pb4">
             <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
-            {{ if .Params.image }}
-            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 db mb4" />
-            {{ end }}
         </div>
 
         {{ if .Params.intro }}

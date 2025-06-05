@@ -1,6 +1,5 @@
 ---
 title: "How It Works"
-image: "/img/how-it-works-hero.jpg"
 process_steps:
   - icon: "/img/icon-contact.svg"
     title: "Contact Us"

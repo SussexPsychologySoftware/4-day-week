@@ -1,6 +1,5 @@
 ---
 title: "The Team"
-image: "/img/team-hero.jpg"
 team_members:
   - name: "DR CHARLOTTE RAE"
     role: "Founder & lead trial consultant"
