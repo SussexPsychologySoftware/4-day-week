@@ -1,33 +1,33 @@
 {{ $currentPage := . }}
 {{ $currentURL := $currentPage.RelPermalink }}
 
-<nav class="flex justify-between bb b--white-10">
-	<a href="/" class="pa3 db mr4 h-100 w3 flex-none">
-		<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="br0 db mb0 w-100"/>
+<nav class="flex items-center bb bg-primary">
+	<a href="/" class="pa1 mr4 h-100 w3 flex-none">
+		<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="br0 mb0 w-100"/>
 	</a>
-	<ul class="flex b grey-3">
+	<ul class="flex h-100 ml4">
 		{{/* Home Link */}}
-		<li><a href="/" class="pa3 no-underline db {{ if .IsHome }}bg-primary white{{ else }}grey-3{{ end }}">Home</a></li>
+		<li class="flex"><a href="/" class="pa2 no-underline flex items-center {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">Home</a></li>
 
 		{{/* Success Stories */}}
-		<li><a href="/success-stories/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "success-stories") (hasPrefix $currentURL "/success-stories/") }}bg-primary white{{ else }}grey-3{{ end }}">Success Stories</a></li>
+		<li class="flex"><a href="/success-stories/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">Success Stories</a></li>
 
 		{{/* How It Works */}}
-		<li><a href="/how-it-works/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "how-it-works") (hasPrefix $currentURL "/how-it-works/") }}bg-primary white{{ else }}grey-3{{ end }}">How It Works</a></li>
+		<li class="flex"><a href="/how-it-works/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">How It Works</a></li>
 
 		{{/* Join the Programme */}}
-		<li><a href="/signup/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "signup") (hasPrefix $currentURL "/signup/") }}bg-primary white{{ else }}grey-3{{ end }}">Join the Programme</a></li>
+		<li class="flex"><a href="/signup/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "signup") }}bg-white primary{{ else }}white{{ end }}">Join the Programme</a></li>
 
 		{{/* Be a Control Employer */}}
-		<li><a href="/control-employer/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "control-employer") (hasPrefix $currentURL "/control-employer/") }}bg-primary white{{ else }}grey-3{{ end }}">Be a Control Employer</a></li>
+		<li class="flex"><a href="/control-employer/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">Be a Control Employer</a></li>
 
 		{{/* The Team */}}
-		<li><a href="/team/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "team") (hasPrefix $currentURL "/team/") }}bg-primary white{{ else }}grey-3{{ end }}">The Team</a></li>
+		<li class="flex"><a href="/team/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">The Team</a></li>
 
 		{{/* Get in Touch */}}
-		<li><a href="/contact/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "contact") (hasPrefix $currentURL "/contact/") }}bg-primary white{{ else }}grey-3{{ end }}">Get in Touch</a></li>
+		<li class="flex"><a href="/contact/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">Get in Touch</a></li>
 
 		{{/* Resources */}}
-		<li><a href="/resources/" class="pa3 no-underline db {{ if or (eq $currentPage.Section "resources") (hasPrefix $currentURL "/resources/") }}bg-primary white{{ else }}grey-3{{ end }}">Resources</a></li>
+		<li class="flex"><a href="/resources/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
 	</ul>
 </nav>
