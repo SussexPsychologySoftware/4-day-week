@@ -46,7 +46,7 @@ jobs:
           node-version: '18'
           cache: 'npm'
       - name: Install Node.js dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Build Webpack assets
         run: npm run build:webpack
       - name: Build with Hugo
