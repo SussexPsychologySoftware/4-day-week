@@ -6,13 +6,13 @@ hero:
 features:
   - title: "Getting 4 Day Week Ready?"
     description: "Speak to Dr Charlotte Rae, the UK’s leading quantitative researcher on the 4 day work week, about our consultancy and data-tracking service."
-    image: "/img/feature1.webp"
+    image: "/img/SussexInnovationImages-24.jpg"
     link_text: "FIND OUT MORE"
     link_url: "/how-it-works"
   - title: "Support for Employers"
     description: "If you’re a UK-based business, you might be eligible to join our shorter working week trial, and monitor the effect on staff wellbeing, performance, and business outcomes.
     You can also take part as a 'control' employer, without a change to working schedules."
-    image: "/img/feature2.webp"
+    image: "/img/SussexInnovationImages-8.jpg"
     link_text: "REGISTER HERE"
     link_url: "/how-it-works"
   - title: "Real Success Stories"

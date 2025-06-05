@@ -4,7 +4,7 @@ image: "/img/team-hero.jpg"
 team_members:
   - name: "DR CHARLOTTE RAE"
     role: "Founder & lead trial consultant"
-    photo: "/img/sarah-johnson.jpg"
+    photo: "/img/PsyPortrait-29.jpg"
     bio: "As an Associate Professor at the University of Sussex, Charlotte specialises in the psychology of wellbeing and workplace performance. Since 2022 she has been responsible for monitoring the impact of the 4 day work week on organisations and teams, reporting data back to employers and their staff. 
         Over three years working closely with businesses, Charlotte has become the UK’s leading quantitative researcher on the 4 day week, proving its impact on wellbeing and productivity, and identifying many of the most common challenges that organisations face as they adjust to new working practices. 
         Charlotte will consult with you ahead of a trial period to help answer your questions, address your concerns and prepare effectively, as well as accurately measuring the effect on your organisation and its people."
