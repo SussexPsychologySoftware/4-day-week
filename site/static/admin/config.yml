@@ -260,3 +260,11 @@ collections:
               - {label: "Page Name", name: "name", widget: "string"}
               - {label: "URL", name: "url", widget: "string"}
               - {label: "Order", name: "weight", widget: "number", default: 1}
+          - label: "Social Links"
+            name: "social"
+            widget: "list"
+            required: false
+            fields:
+              { label: "Platform", name: "platform", widget: "string" }
+              { label: "URL", name: "url", widget: "string" }
+              { label: "Icon", name: "icon", widget: "string", hint: "SVG code or icon class" }

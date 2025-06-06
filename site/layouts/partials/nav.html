@@ -30,4 +30,13 @@
 		{{/* Resources */}}
 		<li class="flex"><a href="/resources/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
 	</ul>
+	<!-- Social Links Section -->
+	<div class="flex items-center pa2">
+		{{ $nav := .Site.Data.navigation }}
+		{{ range $nav.social }}
+		<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="social-link white pa2 flex items-center">
+			<div class="w1 h1">{{ .svg | safeHTML }}</div>
+		</a>
+		{{ end }}
+	</div>
 </nav>
