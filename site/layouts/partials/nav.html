@@ -21,8 +21,8 @@
 			<li class="nav-item nav-show-xs3"><a href="/resources/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
 			<li class="nav-item nav-show-xs4"><a href="/signup/" class="pa2 no-underline db nowrap bg-accent white br2">Join the Programme</a></li>
 
-			<!-- More dropdown - shows when any items are hidden -->
-			<li class="nav-more relative">
+			<!-- More dropdown with text - shows when some items are hidden -->
+			<li class="nav-more nav-more-text relative">
 				<a href="#" class="pa2 no-underline db white nowrap dropdown-toggle">More <span class="sub-arrow">▼</span></a>
 				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 nowrap dn top-100 left-0 z-1">
 					<li class="nav-hide-xl"><a href="/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Home</a></li>
@@ -33,6 +33,27 @@
 					<li class="nav-hide-xs2"><a href="/contact/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Contact Us</a></li>
 					<li class="nav-hide-xs3"><a href="/resources/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Resources</a></li>
 					<li class="nav-hide-xs4"><a href="/signup/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Join the Programme</a></li>
+				</ul>
+			</li>
+
+			<!-- Hamburger menu - shows when ALL items are hidden -->
+			<li class="nav-more nav-more-hamburger relative">
+				<a href="#" class="pa2 no-underline db white nowrap dropdown-toggle hamburger-button">
+					<div class="hamburger">
+						<span class="hamburger-line"></span>
+						<span class="hamburger-line"></span>
+						<span class="hamburger-line"></span>
+					</div>
+				</a>
+				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 nowrap dn top-100 left-0 z-1">
+					<li><a href="/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Home</a></li>
+					<li><a href="/success-stories/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Success Stories</a></li>
+					<li><a href="/how-it-works/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">How It Works</a></li>
+					<li><a href="/control-employer/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Be a Control Employer</a></li>
+					<li><a href="/team/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">The Team</a></li>
+					<li><a href="/contact/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Contact Us</a></li>
+					<li><a href="/resources/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Resources</a></li>
+					<li><a href="/signup/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Join the Programme</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -52,25 +73,46 @@
 	/* Prevent text wrapping and maintain consistent font size */
 	.nowrap {
 		white-space: nowrap;
-		font-size: 1rem; /* Fixed font size */
+		font-size: 1rem;
 	}
 
 	.nav-main {
-		font-size: 1rem; /* Ensure consistent sizing */
+		font-size: 1rem;
 	}
 
-	/* Default: Hide More dropdown, show all nav items */
+	/* Default: Hide both More options */
 	.nav-more { display: none; }
 	.nav-hide-xl, .nav-hide-lg, .nav-hide-md, .nav-hide-sm, .nav-hide-xs, .nav-hide-xs2, .nav-hide-xs3, .nav-hide-xs4 {
 		display: none;
 	}
 
+	/* Hamburger icon styles */
+	.hamburger {
+		width: 20px;
+		height: 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.hamburger-line {
+		width: 100%;
+		height: 2px;
+		background-color: currentColor;
+		border-radius: 1px;
+	}
+
+	.hamburger-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	/* Progressive hiding as screen gets smaller */
-	/* Start hiding items when space gets tight */
 	@media (max-width: 1400px) {
 		.nav-show-xl { display: none; }
 		.nav-hide-xl { display: block; }
-		.nav-more { display: block; }
+		.nav-more-text { display: block; }
 	}
 
 	@media (max-width: 1200px) {
@@ -108,6 +150,12 @@
 		.nav-hide-xs4 { display: block; }
 	}
 
+	/* When ALL items are hidden, switch to hamburger */
+	@media (max-width: 350px) {
+		.nav-more-text { display: none; }
+		.nav-more-hamburger { display: block; }
+	}
+
 	/* Dropdown styles */
 	.dropdown-menu {
 		min-width: 200px;
@@ -127,7 +175,6 @@
 		margin-left: 0.25rem;
 	}
 
-	/* Ensure social icons don't shrink */
 	.flex-shrink-0 {
 		flex-shrink: 0;
 	}
