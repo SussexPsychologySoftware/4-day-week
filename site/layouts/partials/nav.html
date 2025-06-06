@@ -1,42 +1,105 @@
 {{ $currentPage := . }}
-{{ $currentURL := $currentPage.RelPermalink }}
 
-<nav class="flex items-center bb bg-primary">
-	<a href="/" class="pa1 mr4 h-100 w3 flex-none">
-		<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="br0 mb0 w-100"/>
-	</a>
-	<ul class="flex h-100 ml4">
-		{{/* Home Link */}}
-		<li class="flex"><a href="/" class="pa2 no-underline flex items-center {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">Home</a></li>
+<nav class="flex items-center justify-between bb bg-primary pa2">
+	<!-- Logo Section -->
+	<div class="flex-shrink-0">
+		<a href="/" class="db">
+			<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="h2 w-auto"/>
+		</a>
+	</div>
 
-		{{/* Success Stories */}}
-		<li class="flex"><a href="/success-stories/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">Success Stories</a></li>
+	<!-- Main Navigation - Center -->
+	<div class="flex-grow-1 tc">
+		<ul class="flex justify-center items-center list ma0 pa0 nav-main">
+			<li class="nav-always"><a href="/" class="pa2 no-underline db {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">Home</a></li>
+			<li class="nav-always"><a href="/success-stories/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">Success Stories</a></li>
 
-		{{/* How It Works */}}
-		<li class="flex"><a href="/how-it-works/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">How It Works</a></li>
+			<!-- These items show/hide based on screen size -->
+			<li class="nav-responsive nav-show-xl"><a href="/how-it-works/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">How It Works</a></li>
+			<li class="nav-responsive nav-show-lg"><a href="/control-employer/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">Be a Control Employer</a></li>
+			<li class="nav-responsive nav-show-md"><a href="/team/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">The Team</a></li>
+			<li class="nav-responsive nav-show-sm"><a href="/contact/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">Contact Us</a></li>
+			<li class="nav-responsive nav-show-xs"><a href="/resources/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
 
-		{{/* Join the Programme */}}
-		<li class="flex"><a href="/signup/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "signup") }}bg-white primary{{ else }}white{{ end }}">Join the Programme</a></li>
+			<li class="nav-always"><a href="/signup/" class="pa2 no-underline db bg-accent white br2">Join the Programme</a></li>
 
-		{{/* Be a Control Employer */}}
-		<li class="flex"><a href="/control-employer/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">Be a Control Employer</a></li>
+			<!-- More dropdown - shows when items are hidden -->
+			<li class="nav-more relative">
+				<a href="#" class="pa2 no-underline db white dropdown-toggle">More <span class="sub-arrow">▼</span></a>
+				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 w5 dn top-100 left-0 z-1">
+					<li class="nav-hide-xl"><a href="/how-it-works/" class="pa2 no-underline db primary hover-bg-light-gray">How It Works</a></li>
+					<li class="nav-hide-lg"><a href="/control-employer/" class="pa2 no-underline db primary hover-bg-light-gray">Be a Control Employer</a></li>
+					<li class="nav-hide-md"><a href="/team/" class="pa2 no-underline db primary hover-bg-light-gray">The Team</a></li>
+					<li class="nav-hide-sm"><a href="/contact/" class="pa2 no-underline db primary hover-bg-light-gray">Contact Us</a></li>
+					<li class="nav-hide-xs"><a href="/resources/" class="pa2 no-underline db primary hover-bg-light-gray">Resources</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 
-		{{/* The Team */}}
-		<li class="flex"><a href="/team/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">The Team</a></li>
-
-		{{/* Get in Touch */}}
-		<li class="flex"><a href="/contact/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">Get in Touch</a></li>
-
-		{{/* Resources */}}
-		<li class="flex"><a href="/resources/" class="pa2 no-underline flex items-center {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
-	</ul>
-	<!-- Social Links Section -->
-	<div class="flex items-center pa2">
-		{{ $nav := .Site.Data.navigation }}
-		{{ range $nav.social }}
-		<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="social-link white pa2 flex items-center">
+	<!-- Social Icons Section - Right -->
+	<div class="flex-shrink-0">
+		{{ range .Site.Data.navigation.social }}
+		<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="white pa2 dib">
 			<div class="w1 h1">{{ .svg | safeHTML }}</div>
 		</a>
 		{{ end }}
 	</div>
 </nav>
+
+<style>
+	/* Default: Hide More dropdown, show all nav items */
+	.nav-more { display: none; }
+	.nav-hide-xl, .nav-hide-lg, .nav-hide-md, .nav-hide-sm, .nav-hide-xs { display: none; }
+
+	/* XL screens (1400px+) - show everything */
+	@media (min-width: 1400px) {
+		.nav-show-xl { display: block; }
+	}
+
+	/* Large screens (1200px+) - hide "How It Works" */
+	@media (max-width: 1399px) {
+		.nav-show-xl { display: none; }
+		.nav-hide-xl { display: block; }
+		.nav-more { display: block; }
+	}
+
+	/* Medium screens (1000px+) - also hide "Be a Control Employer" */
+	@media (max-width: 1199px) {
+		.nav-show-lg { display: none; }
+		.nav-hide-lg { display: block; }
+	}
+
+	/* Small screens (800px+) - also hide "The Team" */
+	@media (max-width: 999px) {
+		.nav-show-md { display: none; }
+		.nav-hide-md { display: block; }
+	}
+
+	/* XS screens (600px+) - also hide "Contact Us" */
+	@media (max-width: 799px) {
+		.nav-show-sm { display: none; }
+		.nav-hide-sm { display: block; }
+	}
+
+	/* Mobile screens - also hide "Resources" */
+	@media (max-width: 599px) {
+		.nav-show-xs { display: none; }
+		.nav-hide-xs { display: block; }
+	}
+
+	/* Dropdown styles */
+	.dropdown-toggle:hover + .dropdown-menu,
+	.dropdown-menu:hover {
+		display: block !important;
+	}
+
+	.hover-bg-light-gray:hover {
+		background-color: #f4f4f4;
+	}
+
+	.sub-arrow {
+		font-size: 0.8em;
+		margin-left: 0.25rem;
+	}
+</style>
