@@ -11,27 +11,28 @@
 	<!-- Main Navigation - Center -->
 	<div class="flex-grow-1 tc">
 		<ul class="flex justify-center items-center list ma0 pa0 nav-main">
-			<li class="nav-always"><a href="/" class="pa2 no-underline db {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">Home</a></li>
-			<li class="nav-always"><a href="/success-stories/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">Success Stories</a></li>
+			<!-- All items are now collapsible -->
+			<li class="nav-item nav-show-xl"><a href="/" class="pa2 no-underline db nowrap {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">Home</a></li>
+			<li class="nav-item nav-show-lg"><a href="/success-stories/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">Success Stories</a></li>
+			<li class="nav-item nav-show-md"><a href="/how-it-works/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">How It Works</a></li>
+			<li class="nav-item nav-show-sm"><a href="/control-employer/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">Be a Control Employer</a></li>
+			<li class="nav-item nav-show-xs"><a href="/team/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">The Team</a></li>
+			<li class="nav-item nav-show-xs2"><a href="/contact/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">Contact Us</a></li>
+			<li class="nav-item nav-show-xs3"><a href="/resources/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
+			<li class="nav-item nav-show-xs4"><a href="/signup/" class="pa2 no-underline db nowrap bg-accent white br2">Join the Programme</a></li>
 
-			<!-- These items show/hide based on screen size -->
-			<li class="nav-responsive nav-show-xl"><a href="/how-it-works/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">How It Works</a></li>
-			<li class="nav-responsive nav-show-lg"><a href="/control-employer/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">Be a Control Employer</a></li>
-			<li class="nav-responsive nav-show-md"><a href="/team/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">The Team</a></li>
-			<li class="nav-responsive nav-show-sm"><a href="/contact/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">Contact Us</a></li>
-			<li class="nav-responsive nav-show-xs"><a href="/resources/" class="pa2 no-underline db {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
-
-			<li class="nav-always"><a href="/signup/" class="pa2 no-underline db bg-accent white br2">Join the Programme</a></li>
-
-			<!-- More dropdown - shows when items are hidden -->
+			<!-- More dropdown - shows when any items are hidden -->
 			<li class="nav-more relative">
-				<a href="#" class="pa2 no-underline db white dropdown-toggle">More <span class="sub-arrow">▼</span></a>
-				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 w5 dn top-100 left-0 z-1">
-					<li class="nav-hide-xl"><a href="/how-it-works/" class="pa2 no-underline db primary hover-bg-light-gray">How It Works</a></li>
-					<li class="nav-hide-lg"><a href="/control-employer/" class="pa2 no-underline db primary hover-bg-light-gray">Be a Control Employer</a></li>
-					<li class="nav-hide-md"><a href="/team/" class="pa2 no-underline db primary hover-bg-light-gray">The Team</a></li>
-					<li class="nav-hide-sm"><a href="/contact/" class="pa2 no-underline db primary hover-bg-light-gray">Contact Us</a></li>
-					<li class="nav-hide-xs"><a href="/resources/" class="pa2 no-underline db primary hover-bg-light-gray">Resources</a></li>
+				<a href="#" class="pa2 no-underline db white nowrap dropdown-toggle">More <span class="sub-arrow">▼</span></a>
+				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 nowrap dn top-100 left-0 z-1">
+					<li class="nav-hide-xl"><a href="/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Home</a></li>
+					<li class="nav-hide-lg"><a href="/success-stories/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Success Stories</a></li>
+					<li class="nav-hide-md"><a href="/how-it-works/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">How It Works</a></li>
+					<li class="nav-hide-sm"><a href="/control-employer/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Be a Control Employer</a></li>
+					<li class="nav-hide-xs"><a href="/team/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">The Team</a></li>
+					<li class="nav-hide-xs2"><a href="/contact/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Contact Us</a></li>
+					<li class="nav-hide-xs3"><a href="/resources/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Resources</a></li>
+					<li class="nav-hide-xs4"><a href="/signup/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Join the Programme</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -48,47 +49,70 @@
 </nav>
 
 <style>
-	/* Default: Hide More dropdown, show all nav items */
-	.nav-more { display: none; }
-	.nav-hide-xl, .nav-hide-lg, .nav-hide-md, .nav-hide-sm, .nav-hide-xs { display: none; }
-
-	/* XL screens (1400px+) - show everything */
-	@media (min-width: 1400px) {
-		.nav-show-xl { display: block; }
+	/* Prevent text wrapping and maintain consistent font size */
+	.nowrap {
+		white-space: nowrap;
+		font-size: 1rem; /* Fixed font size */
 	}
 
-	/* Large screens (1200px+) - hide "How It Works" */
-	@media (max-width: 1399px) {
+	.nav-main {
+		font-size: 1rem; /* Ensure consistent sizing */
+	}
+
+	/* Default: Hide More dropdown, show all nav items */
+	.nav-more { display: none; }
+	.nav-hide-xl, .nav-hide-lg, .nav-hide-md, .nav-hide-sm, .nav-hide-xs, .nav-hide-xs2, .nav-hide-xs3, .nav-hide-xs4 {
+		display: none;
+	}
+
+	/* Progressive hiding as screen gets smaller */
+	/* Start hiding items when space gets tight */
+	@media (max-width: 1400px) {
 		.nav-show-xl { display: none; }
 		.nav-hide-xl { display: block; }
 		.nav-more { display: block; }
 	}
 
-	/* Medium screens (1000px+) - also hide "Be a Control Employer" */
-	@media (max-width: 1199px) {
+	@media (max-width: 1200px) {
 		.nav-show-lg { display: none; }
 		.nav-hide-lg { display: block; }
 	}
 
-	/* Small screens (800px+) - also hide "The Team" */
-	@media (max-width: 999px) {
+	@media (max-width: 1000px) {
 		.nav-show-md { display: none; }
 		.nav-hide-md { display: block; }
 	}
 
-	/* XS screens (600px+) - also hide "Contact Us" */
-	@media (max-width: 799px) {
+	@media (max-width: 800px) {
 		.nav-show-sm { display: none; }
 		.nav-hide-sm { display: block; }
 	}
 
-	/* Mobile screens - also hide "Resources" */
-	@media (max-width: 599px) {
+	@media (max-width: 700px) {
 		.nav-show-xs { display: none; }
 		.nav-hide-xs { display: block; }
 	}
 
+	@media (max-width: 600px) {
+		.nav-show-xs2 { display: none; }
+		.nav-hide-xs2 { display: block; }
+	}
+
+	@media (max-width: 500px) {
+		.nav-show-xs3 { display: none; }
+		.nav-hide-xs3 { display: block; }
+	}
+
+	@media (max-width: 400px) {
+		.nav-show-xs4 { display: none; }
+		.nav-hide-xs4 { display: block; }
+	}
+
 	/* Dropdown styles */
+	.dropdown-menu {
+		min-width: 200px;
+	}
+
 	.dropdown-toggle:hover + .dropdown-menu,
 	.dropdown-menu:hover {
 		display: block !important;
@@ -101,5 +125,10 @@
 	.sub-arrow {
 		font-size: 0.8em;
 		margin-left: 0.25rem;
+	}
+
+	/* Ensure social icons don't shrink */
+	.flex-shrink-0 {
+		flex-shrink: 0;
 	}
 </style>
