@@ -1,11 +1,28 @@
 {{ define "main" }}
 
+<style>
+    .icon-circle {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+    .icon-circle svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+</style>
+
 <div class="ph3 bg-off-white min-vh-100">
     <div class="center mw7 pv4">
 
         <!-- Page Header -->
-        <div class="tc pb4">
-            <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+        <div class="tc pb3">
+            <h1 class="f2 primary normal lh-title mb2">{{ .Title }}</h1>
+            <p class="f6 fw3 mw7 center">If you're interested in trialling a shorter working week:</p>
         </div>
 
         <!-- Page Content -->
@@ -15,29 +32,42 @@
 
         <!-- Process Steps -->
         {{ if .Params.process_steps }}
-        <div class="pv4">
+        <div class="pv3">
             <div class="cf">
                 {{ range $index, $step := .Params.process_steps }}
-                <div class="fl w-100 w-50-m w-25-l pa3">
-                    <div class="bg-white pa4 br2 ba b--light-gray tc" style="min-height: 300px;">
+                <div class="fl w-100 w-50-m w-25-l pa2">
+                    <div class="bg-white pa3 br2 tc" style="min-height: 280px;">
 
-                        <!-- Step Number -->
-                        <div class="bg-primary white br-100 w2 h2 dib mb3" style="line-height: 2rem; text-align: center;">
-                            <span class="f4 b">{{ add $index 1 }}</span>
+                        <!-- Icon Circle -->
+                        <div class="bg-primary white icon-circle">
+                            {{ if eq $index 0 }}
+                            <!-- Envelope icon for Contact Us -->
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            {{ else if eq $index 1 }}
+                            <!-- Speech bubble icon for Meet for a Chat -->
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6V6h12v8z"/>
+                            </svg>
+                            {{ else if eq $index 2 }}
+                            <!-- Pencil icon for Run Trial -->
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                            </svg>
+                            {{ else if eq $index 3 }}
+                            <!-- Document/report icon for Custom Report -->
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                            </svg>
+                            {{ end }}
                         </div>
-
-                        <!-- Icon -->
-                        {{ if .icon }}
-                        <div class="mb3">
-                            <img src="{{ .icon }}" alt="{{ .title }}" class="w3 h3 db center" />
-                        </div>
-                        {{ end }}
 
                         <!-- Content -->
-                        <h3 class="f3 b lh-title mb3 primary">{{ .title }}</h3>
-                        <p class="f5 lh-copy gray">{{ .description }}
+                        <h3 class="f4 normal lh-title mb3 primary ttu">{{ .title }}</h3>
+                        <p class="f6 lh-copy gray normal">{{ .description }}
                             {{ if .email }}
-                            <a href="mailto:{{ .email }}" class="f4 link primary">{{ .email }}</a>
+                            <a href="mailto:{{ .email }}" class="f6 link primary">{{ .email }}</a>
                             {{ end }}
                         </p>
 
@@ -50,7 +80,7 @@
 
         <!-- Registration Section -->
         {{ if .Params.registration }}
-        <div class="pv5 bg-primary white tc br2 ma3">
+        <div class="pv4 bg-primary white tc br2 ma3">
             <div class="center mw6 ph3">
                 <h2 class="f2 b lh-title mb3">{{ .Params.registration.heading }}</h2>
                 {{ if .Params.registration.description }}
