@@ -1,66 +1,67 @@
 {{ $currentPage := . }}
 
-<nav class="flex items-center justify-between bb bg-primary pa2">
+<nav class="flex items-center justify-between bg-primary pa3">
 	<!-- Logo Section -->
-	<div class="flex-shrink-0">
+	<div class="flex-shrink-0 flex-grow-1">
 		<a href="/" class="db">
-			<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="h2 w-auto"/>
+			<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="h3 w-auto"/>
 		</a>
 	</div>
 
-	<!-- Main Navigation - Center -->
-	<div class="flex-grow-1 tc">
+	<!-- Main Navigation - Center (takes less space) -->
+	<div class="flex-shrink-0 nav-container">
 		<ul class="flex justify-center items-center list ma0 pa0 nav-main">
-			<!-- All items are now collapsible -->
-			<li class="nav-item nav-show-xl"><a href="/" class="pa2 no-underline db nowrap {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">Home</a></li>
-			<li class="nav-item nav-show-lg"><a href="/success-stories/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">Success Stories</a></li>
-			<li class="nav-item nav-show-md"><a href="/how-it-works/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">How It Works</a></li>
-			<li class="nav-item nav-show-sm"><a href="/control-employer/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">Be a Control Employer</a></li>
-			<li class="nav-item nav-show-xs"><a href="/team/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">The Team</a></li>
-			<li class="nav-item nav-show-xs2"><a href="/contact/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">Contact Us</a></li>
-			<li class="nav-item nav-show-xs3"><a href="/resources/" class="pa2 no-underline db nowrap {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">Resources</a></li>
-			<li class="nav-item nav-show-xs4"><a href="/signup/" class="pa2 no-underline db nowrap bg-accent white br2">Join the Programme</a></li>
+			<!-- All items are now collapsible - order determines collapse priority (rightmost first) -->
+			<li class="nav-item nav-show-xl"><a href="/" class="pa1 mh1 no-underline db nowrap {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">HOME</a></li>
+			<li class="nav-item nav-show-xl"><a href="/success-stories/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">SUCCESS STORIES</a></li>
+			<li class="nav-item nav-show-lg"><a href="/how-it-works/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">HOW IT WORKS</a></li>
+			<li class="nav-item nav-show-md"><a href="/control-employer/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">BE A CONTROL EMPLOYER</a></li>
+			<li class="nav-item nav-show-sm"><a href="/team/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">THE TEAM</a></li>
+			<li class="nav-item nav-show-xs"><a href="/contact/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">CONTACT US</a></li>
+			<li class="nav-item nav-show-xs2"><a href="/resources/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">RESOURCES</a></li>
+			<li class="nav-item nav-show-xs3"><a href="/signup/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "signup") }}bg-white primary{{ else }}white{{ end }}">JOIN THE PROGRAMME</a></li>
 
-			<!-- More dropdown with text - shows when some items are hidden -->
+			<!-- More dropdown with text - shows when some items are hidden but not all -->
 			<li class="nav-more nav-more-text relative">
-				<a href="#" class="pa2 no-underline db white nowrap dropdown-toggle">More <span class="sub-arrow">▼</span></a>
-				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 nowrap dn top-100 left-0 z-1">
-					<li class="nav-hide-xl"><a href="/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Home</a></li>
-					<li class="nav-hide-lg"><a href="/success-stories/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Success Stories</a></li>
-					<li class="nav-hide-md"><a href="/how-it-works/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">How It Works</a></li>
-					<li class="nav-hide-sm"><a href="/control-employer/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Be a Control Employer</a></li>
-					<li class="nav-hide-xs"><a href="/team/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">The Team</a></li>
-					<li class="nav-hide-xs2"><a href="/contact/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Contact Us</a></li>
-					<li class="nav-hide-xs3"><a href="/resources/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Resources</a></li>
-					<li class="nav-hide-xs4"><a href="/signup/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Join the Programme</a></li>
+				<a href="#" class="pa1 mh1 no-underline db white nowrap dropdown-toggle">MORE <span class="sub-arrow">▼</span></a>
+				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 nowrap dn top-100 right-0 z-max">
+					<!-- Note: Order is reversed so rightmost items appear first -->
+					<li class="nav-hide-xs3"><a href="/signup/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "signup") }}bg-light-gray primary{{ else }}primary{{ end }}">JOIN THE PROGRAMME</a></li>
+					<li class="nav-hide-xs2"><a href="/resources/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "resources") }}bg-light-gray primary{{ else }}primary{{ end }}">RESOURCES</a></li>
+					<li class="nav-hide-xs"><a href="/contact/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "contact") }}bg-light-gray primary{{ else }}primary{{ end }}">CONTACT US</a></li>
+					<li class="nav-hide-sm"><a href="/team/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "team") }}bg-light-gray primary{{ else }}primary{{ end }}">THE TEAM</a></li>
+					<li class="nav-hide-md"><a href="/control-employer/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "control-employer") }}bg-light-gray primary{{ else }}primary{{ end }}">BE A CONTROL EMPLOYER</a></li>
+					<li class="nav-hide-lg"><a href="/how-it-works/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "how-it-works") }}bg-light-gray primary{{ else }}primary{{ end }}">HOW IT WORKS</a></li>
+					<li class="nav-hide-xl"><a href="/success-stories/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "success-stories") }}bg-light-gray primary{{ else }}primary{{ end }}">SUCCESS STORIES</a></li>
+					<li class="nav-hide-xl2"><a href="/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if .IsHome }}bg-light-gray primary{{ else }}primary{{ end }}">HOME</a></li>
 				</ul>
 			</li>
 
 			<!-- Hamburger menu - shows when ALL items are hidden -->
 			<li class="nav-more nav-more-hamburger relative">
-				<a href="#" class="pa2 no-underline db white nowrap dropdown-toggle hamburger-button">
+				<a href="#" class="pa1 mh1 no-underline db white nowrap dropdown-toggle hamburger-button">
 					<div class="hamburger">
 						<span class="hamburger-line"></span>
 						<span class="hamburger-line"></span>
 						<span class="hamburger-line"></span>
 					</div>
 				</a>
-				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 nowrap dn top-100 left-0 z-1">
-					<li><a href="/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Home</a></li>
-					<li><a href="/success-stories/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Success Stories</a></li>
-					<li><a href="/how-it-works/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">How It Works</a></li>
-					<li><a href="/control-employer/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Be a Control Employer</a></li>
-					<li><a href="/team/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">The Team</a></li>
-					<li><a href="/contact/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Contact Us</a></li>
-					<li><a href="/resources/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Resources</a></li>
-					<li><a href="/signup/" class="pa2 no-underline db primary hover-bg-light-gray nowrap">Join the Programme</a></li>
+				<ul class="dropdown-menu absolute bg-white shadow-1 list ma0 pa0 nowrap dn top-100 right-0 z-max">
+					<li><a href="/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if .IsHome }}bg-light-gray primary{{ else }}primary{{ end }}">HOME</a></li>
+					<li><a href="/success-stories/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "success-stories") }}bg-light-gray primary{{ else }}primary{{ end }}">SUCCESS STORIES</a></li>
+					<li><a href="/how-it-works/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "how-it-works") }}bg-light-gray primary{{ else }}primary{{ end }}">HOW IT WORKS</a></li>
+					<li><a href="/control-employer/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "control-employer") }}bg-light-gray primary{{ else }}primary{{ end }}">BE A CONTROL EMPLOYER</a></li>
+					<li><a href="/team/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "team") }}bg-light-gray primary{{ else }}primary{{ end }}">THE TEAM</a></li>
+					<li><a href="/contact/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "contact") }}bg-light-gray primary{{ else }}primary{{ end }}">CONTACT US</a></li>
+					<li><a href="/resources/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "resources") }}bg-light-gray primary{{ else }}primary{{ end }}">RESOURCES</a></li>
+					<li><a href="/signup/" class="pa2 no-underline db hover-bg-light-gray nowrap {{ if or (eq $currentPage.Section "signup") }}bg-light-gray primary{{ else }}primary{{ end }}">JOIN THE PROGRAMME</a></li>
 				</ul>
 			</li>
 		</ul>
 	</div>
 
 	<!-- Social Icons Section - Right -->
-	<div class="flex-shrink-0">
+	<div class="flex-shrink-0 flex-grow-1 tr">
 		{{ range .Site.Data.navigation.social }}
 		<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="white pa2 dib">
 			<div class="w1 h1">{{ .svg | safeHTML }}</div>
@@ -70,26 +71,42 @@
 </nav>
 
 <style>
-	/* Prevent text wrapping and maintain consistent font size */
+	/* Typography with corrected font size */
 	.nowrap {
 		white-space: nowrap;
-		font-size: 1rem;
+		font-size: .9rem;
+		font-weight: 300;
+		letter-spacing: 1px;
+		-webkit-font-smoothing: antialiased;
 	}
 
 	.nav-main {
-		font-size: 1rem;
+		font-size: .9rem;
+		font-weight: 300;
+		letter-spacing: 1px;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	/* Navigation container takes minimal space */
+	.nav-container {
+		max-width: 60%; /* Limits the nav to 60% of available space */
 	}
 
 	/* Default: Hide both More options */
 	.nav-more { display: none; }
-	.nav-hide-xl, .nav-hide-lg, .nav-hide-md, .nav-hide-sm, .nav-hide-xs, .nav-hide-xs2, .nav-hide-xs3, .nav-hide-xs4 {
+	.nav-hide-xl, .nav-hide-xl2, .nav-hide-lg, .nav-hide-md, .nav-hide-sm, .nav-hide-xs, .nav-hide-xs2, .nav-hide-xs3 {
 		display: none;
+	}
+
+	/* High z-index for dropdown to appear over page content */
+	.z-max {
+		z-index: 9999;
 	}
 
 	/* Hamburger icon styles */
 	.hamburger {
-		width: 20px;
-		height: 14px;
+		width: 18px;
+		height: 12px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -97,7 +114,7 @@
 
 	.hamburger-line {
 		width: 100%;
-		height: 2px;
+		height: 1.5px;
 		background-color: currentColor;
 		border-radius: 1px;
 	}
@@ -108,16 +125,26 @@
 		justify-content: center;
 	}
 
-	/* Progressive hiding as screen gets smaller */
-	@media (max-width: 1400px) {
-		.nav-show-xl { display: none; }
-		.nav-hide-xl { display: block; }
+	/* More restrictive breakpoints - collapse earlier */
+	@media (max-width: 1600px) {
+		.nav-show-xs3 { display: none; }
+		.nav-hide-xs3 { display: block; }
 		.nav-more-text { display: block; }
 	}
 
-	@media (max-width: 1200px) {
-		.nav-show-lg { display: none; }
-		.nav-hide-lg { display: block; }
+	@media (max-width: 1450px) {
+		.nav-show-xs2 { display: none; }
+		.nav-hide-xs2 { display: block; }
+	}
+
+	@media (max-width: 1300px) {
+		.nav-show-xs { display: none; }
+		.nav-hide-xs { display: block; }
+	}
+
+	@media (max-width: 1150px) {
+		.nav-show-sm { display: none; }
+		.nav-hide-sm { display: block; }
 	}
 
 	@media (max-width: 1000px) {
@@ -125,40 +152,30 @@
 		.nav-hide-md { display: block; }
 	}
 
-	@media (max-width: 800px) {
-		.nav-show-sm { display: none; }
-		.nav-hide-sm { display: block; }
+	@media (max-width: 850px) {
+		.nav-show-lg { display: none; }
+		.nav-hide-lg { display: block; }
 	}
 
 	@media (max-width: 700px) {
-		.nav-show-xs { display: none; }
-		.nav-hide-xs { display: block; }
+		.nav-show-xl { display: none; }
+		.nav-hide-xl { display: block; }
 	}
 
-	@media (max-width: 600px) {
-		.nav-show-xs2 { display: none; }
-		.nav-hide-xs2 { display: block; }
-	}
-
+	/* When the last visible item (Home) disappears, switch to hamburger */
 	@media (max-width: 500px) {
-		.nav-show-xs3 { display: none; }
-		.nav-hide-xs3 { display: block; }
+		.nav-show-xl { display: none; } /* Hide Home and Success Stories */
+		.nav-hide-xl2 { display: block; }
+		.nav-more-text { display: none; } /* Hide "More" text */
+		.nav-more-hamburger { display: block; } /* Show hamburger */
 	}
 
-	@media (max-width: 400px) {
-		.nav-show-xs4 { display: none; }
-		.nav-hide-xs4 { display: block; }
-	}
-
-	/* When ALL items are hidden, switch to hamburger */
-	@media (max-width: 350px) {
-		.nav-more-text { display: none; }
-		.nav-more-hamburger { display: block; }
-	}
-
-	/* Dropdown styles */
+	/* Dropdown styles - positioned from right with max z-index */
 	.dropdown-menu {
 		min-width: 200px;
+		right: 0;
+		left: auto;
+		border: 1px solid #e0e0e0;
 	}
 
 	.dropdown-toggle:hover + .dropdown-menu,
@@ -167,11 +184,11 @@
 	}
 
 	.hover-bg-light-gray:hover {
-		background-color: #f4f4f4;
+		background-color: #f4f4f4 !important;
 	}
 
 	.sub-arrow {
-		font-size: 0.8em;
+		font-size: 0.7em;
 		margin-left: 0.25rem;
 	}
 
