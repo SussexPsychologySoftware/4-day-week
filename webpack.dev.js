@@ -10,7 +10,8 @@ module.exports = merge(common, {
 
   output: {
     filename: "[name].js",
-    chunkFilename: "[id].css"
+    chunkFilename: "[id].css",
+    publicPath: "http://localhost:3000/"
   },
 
   devServer: {
@@ -22,6 +23,9 @@ module.exports = merge(common, {
     open: true,
     historyApiFallback: {
       rewrites: [{from: /./, to: "404.html"}]
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:1313"
     }
   },
 
