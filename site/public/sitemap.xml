@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>//localhost:1313/posts/</loc>
+  </url><url>
+    <loc>//localhost:1313/control-employer/</loc>
+  </url><url>
+    <loc>//localhost:1313/contact/</loc>
+  </url><url>
+    <loc>//localhost:1313/how-it-works/</loc>
+  </url><url>
+    <loc>//localhost:1313/signup/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/</loc>
+  </url><url>
+    <loc>//localhost:1313/success-stories/</loc>
+  </url><url>
+    <loc>//localhost:1313/</loc>
+  </url><url>
+    <loc>//localhost:1313/team/</loc>
+  </url>
+</urlset>
