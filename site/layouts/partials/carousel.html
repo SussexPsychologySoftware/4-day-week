@@ -1,0 +1,64 @@
+<!-- layouts/partials/carousel.html -->
+{{ $carouselId := .id | default "carousel" }}
+{{ $items := .items }}
+{{ $type := .type | default "default" }}
+{{ $heading := .heading }}
+
+{{ if $items }}
+<div class="pb5">
+    {{ if $heading }}
+    <h2 class="f3 fw3 lh-title mb4 tc primary ttu">{{ $heading }}</h2>
+    {{ end }}
+
+    <div class="carousel-container" id="{{ $carouselId }}-container" data-carousel-type="{{ $type }}">
+        <div class="carousel-track" id="{{ $carouselId }}-track">
+            {{ range $items }}
+            <div class="carousel-slide">
+                {{ if eq $type "testimonials" }}
+                <!-- Testimonial Card -->
+                <div class="success-card">
+                    {{ if .logo }}
+                    <div class="tc mb3">
+                        <img src="{{ .logo }}" alt="{{ .company }}" class="company-logo" />
+                    </div>
+                    {{ end }}
+                    <div class="company-name tc">{{ .company }}</div>
+                    <div class="quote-text">"{{ .quote }}"</div>
+                    <div class="attribution">— {{ .attribution }}</div>
+                </div>
+                {{ else if eq $type "trial-results" }}
+                <!-- Trial Results Card -->
+                <div class="trial-result-card">
+                    {{ if .logo }}
+                    <div class="tc mb3">
+                        <img src="{{ .logo }}" alt="{{ .company }}" class="company-logo" />
+                    </div>
+                    {{ end }}
+                    <h3 class="f4 b lh-title mb2 tc primary">{{ .company }}</h3>
+                    <p class="f5 lh-copy mb2"><strong>Who are they?</strong> {{ .who }}</p>
+                    <p class="f5 lh-copy mb3"><strong>What did they learn?</strong> {{ .learnings }}</p>
+                    {{ if .link }}
+                    <div class="tc mt-auto">
+                        <a href="{{ .link }}" class="f6 link primary hover-underline" target="_blank" rel="noopener">Visit website</a>
+                    </div>
+                    {{ end }}
+                </div>
+                {{ else }}
+                <!-- Default Card -->
+                <div class="default-card">
+                    {{ .content }}
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
+    </div>
+
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators" id="{{ $carouselId }}-indicators"></div>
+</div>
+{{ end }}
