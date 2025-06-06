@@ -9,13 +9,13 @@ pdf_guide:
 
 partners:
   - name: "4 Day Week Global Foundation"
-    logo: "/img/sussex-business-logo.svg"
+    logo: "/img/company_logos/4dayweekglobal.png"
     text: "advises organisations around the world on adopting a 4 day week."
     website: "https://www.4dayweek.com/"
     redirect_text: "Take a look at their Advice for employers White Paper"
     extra_link: ""
   - name: "4 Day Week Foundation UK"
-    logo: "/img/sussex-business-logo.svg"
+    logo: "/img/company_logos/4dayweekfoundation.png"
     text: "has lots of helpful advice:"
     website: "https://www.4dayweek.co.uk/"
     redirect_text: "see in particular their FAQs"
