@@ -5,72 +5,29 @@
 
         <!-- Page Header -->
         <div class="tc pb4">
-            <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+            <h1 class="f2 fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
+            <p class="f6 fw3 mw7 center">{{ .Params.subtitle }}</p>
         </div>
 
         <!-- Success Stories Carousel -->
         {{ if .Params.success_stories }}
-        <div class="pb5">
-            <h2 class="f2 b lh-title mb4 tc">Success Stories</h2>
-
-            <div class="carousel-container relative">
-                <div class="carousel-wrapper overflow-hidden">
-                    <div class="carousel-track flex" id="success-carousel">
-                        {{ range .Params.success_stories }}
-                        {{ if .company }}
-                        <div class="carousel-slide flex-shrink-0 w-100 w-50-m w-third-l pa2">
-                            <div class="bg-white pa4 br2 ba b--light-gray" style="min-height: 350px;">
-                                {{ if .logo }}
-                                <div class="tc mb3">
-                                    <img src="{{ .logo }}" alt="{{ .company }}" class="w3 h3" style="object-fit: contain;" />
-                                </div>
-                                {{ end }}
-                                <h3 class="f4 b lh-title mb3 tc primary">{{ .company }}</h3>
-                                <blockquote class="f5 lh-copy mb3 i gray">"{{ .quote }}"</blockquote>
-                                <p class="f6 gray tc">— {{ .attribution }}</p>
-                            </div>
-                        </div>
-                        {{ end }}
-                        {{ end }}
-                    </div>
-                </div>
-
-                <!-- Carousel Controls -->
-                <button class="carousel-btn carousel-prev absolute left-0 top-50 bg-primary white pa2 br2 bn" onclick="moveCarousel('success-carousel', -1)">‹</button>
-                <button class="carousel-btn carousel-next absolute right-0 top-50 bg-primary white pa2 br2 bn" onclick="moveCarousel('success-carousel', 1)">›</button>
-            </div>
-
-        </div>
+        {{ partial "carousel.html" (dict
+        "id" "success-stories"
+        "type" "testimonials"
+        "items" .Params.success_stories
+        ) }}
         {{ end }}
 
-        <!-- Trial Results -->
+        <!-- Trial Results Carousel -->
         {{ if .Params.trial_results.logos }}
         <div class="pv4 bg-grey-1">
             <div class="center mw7 ph3">
-                <h2 class="f2 b lh-title mb4 tc">{{ .Params.trial_results.heading | default "Trial Results" }}</h2>
-
-                <div class="cf">
-                    {{ range .Params.trial_results.logos }}
-                    <div class="fl w-100 w-50-m w-third-l pa2">
-                        <div class="bg-white pa4 br2 ba b--light-gray" style="min-height: 250px;">
-                            {{ if .logo }}
-                            <div class="tc mb3">
-                                <img src="{{ .logo }}" alt="{{ .company }}" class="w3 h3" style="object-fit: contain;" />
-                            </div>
-                            {{ end }}
-                            <h3 class="f4 b lh-title mb2 tc primary">{{ .company }}</h3>
-                            <p class="f5 lh-copy mb2"><strong>Who are they?</strong> {{ .who }}</p>
-                            <p class="f5 lh-copy mb3"><strong>What did they learn?</strong> {{ .learnings }}</p>
-                            {{ if .link }}
-                            <div class="tc">
-                                <a href="{{ .link }}" class="f6 link primary">Visit website</a>
-                            </div>
-                            {{ end }}
-                        </div>
-                    </div>
-                    {{ end }}
-                </div>
-
+                {{ partial "carousel.html" (dict
+                "id" "trial-results"
+                "type" "trial-results"
+                "heading" (.Params.trial_results.heading | default "Trial Results")
+                "items" .Params.trial_results.logos
+                ) }}
             </div>
         </div>
         {{ end }}
@@ -78,13 +35,15 @@
         <!-- Participating Employers -->
         {{ if .Params.participating_employers.logos }}
         <div class="pv4">
-            <h2 class="f2 b lh-title mb4 tc">{{ .Params.participating_employers.heading }}</h2>
-            <div class="cf">
+            <h2 class="f3 fw3 lh-title mb4 tc primary ttu">{{ .Params.participating_employers.heading }}</h2>
+            <div class="employers-grid">
                 {{ range .Params.participating_employers.logos }}
-                <div class="fl w-20-l w-25-m w-third pa2">
+                <div class="employer-logo-item">
                     <div class="tc">
-                        <img src="{{ .logo }}" alt="{{ .name }}" class="w-100 h3" style="object-fit: contain;" />
-                        <p class="f6 gray mt2">{{ .name }}</p>
+                        <a href="{{ .link }}">
+                            <img src="{{ .logo }}" alt="{{ .name }}" class="employer-logo" />
+                        </a>
+<!--                        <p class="f6 gray mt2">{{ .name }}</p>-->
                     </div>
                 </div>
                 {{ end }}
@@ -95,66 +54,392 @@
     </div>
 </div>
 
-<!-- Carousel JavaScript -->
-<script>
-    let carouselPositions = {};
-
-    function moveCarousel(carouselId, direction) {
-        const carousel = document.getElementById(carouselId);
-        const slides = carousel.children;
-        const slideWidth = slides[0].offsetWidth;
-
-        if (!carouselPositions[carouselId]) {
-            carouselPositions[carouselId] = 0;
-        }
-
-        carouselPositions[carouselId] += direction * slideWidth;
-
-        // Prevent going beyond bounds
-        const maxPosition = 0;
-        const minPosition = -(slideWidth * (slides.length - 3)); // Show 3 slides at once
-
-        if (carouselPositions[carouselId] > maxPosition) {
-            carouselPositions[carouselId] = maxPosition;
-        }
-        if (carouselPositions[carouselId] < minPosition) {
-            carouselPositions[carouselId] = minPosition;
-        }
-
-        carousel.style.transform = `translateX(${carouselPositions[carouselId]}px)`;
-    }
-
-    // Auto-play carousel (optional)
-    setInterval(() => {
-        moveCarousel('success-carousel', 1);
-    }, 5000);
-</script>
-
-<!-- Carousel CSS -->
+<!-- Carousel Styles -->
 <style>
     .carousel-container {
         position: relative;
+        overflow: hidden;
     }
 
     .carousel-track {
-        transition: transform 0.3s ease;
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+    }
+
+    .carousel-slide {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    /* Responsive slide widths */
+    @media (min-width: 30em) {
+        .carousel-slide {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 60em) {
+        .carousel-slide {
+            width: 33.333%;
+        }
     }
 
     .carousel-btn {
-        cursor: pointer;
-        z-index: 10;
+        position: absolute;
+        top: 50%;
         transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.3s ease;
+        user-select: none;
     }
 
     .carousel-btn:hover {
-        opacity: 0.8;
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.1);
     }
 
+    .carousel-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: translateY(-50%);
+    }
+
+    .carousel-prev {
+        left: 1rem;
+    }
+
+    .carousel-next {
+        right: 1rem;
+    }
+
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .carousel-indicator {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.3);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-indicator.active {
+        background: var(--primary);
+        transform: scale(1.2);
+    }
+
+    /* Card Styles */
+    .success-card,
+    .trial-result-card,
+    .default-card {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e5e5e5;
+    }
+
+    .success-card {
+        min-height: 350px;
+    }
+
+    .trial-result-card {
+        min-height: 300px;
+    }
+
+    .success-card:hover,
+    .trial-result-card:hover,
+    .default-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .company-logo {
+        width: 4rem;
+        height: 4rem;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+
+    .quote-text {
+        flex-grow: 1;
+        font-style: italic;
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .company-name {
+        color: var(--primary);
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .attribution {
+        color: #888;
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: auto;
+    }
+
+    .employers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .employer-logo-item {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .employer-logo {
+        width: 100%;
+        height: 3rem;
+        object-fit: contain;
+        max-width: 150px;
+    }
+
+    /* Mobile optimizations */
     @media (max-width: 768px) {
+        .carousel-btn {
+            display: none;
+        }
+
+        .carousel-container {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-track {
+            transition: none;
+        }
+
         .carousel-slide {
-            width: 100% !important;
+            scroll-snap-align: start;
+        }
+
+        .success-card {
+            min-height: 300px;
+        }
+
+        .trial-result-card {
+            min-height: 280px;
+        }
+
+        .employers-grid {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         }
     }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .carousel-track,
+        .carousel-btn,
+        .success-card,
+        .trial-result-card,
+        .default-card {
+            transition: none;
+        }
+    }
+
+    /* Focus states for keyboard navigation */
+    .carousel-btn:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    .carousel-indicator:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
 </style>
+
+<!-- Carousel JavaScript -->
+<script>
+    class ImprovedCarousel {
+        constructor(containerSelector) {
+            this.container = document.querySelector(containerSelector);
+            if (!this.container) return;
+
+            this.track = this.container.querySelector('.carousel-track');
+            this.slides = this.track.querySelectorAll('.carousel-slide');
+            this.prevBtn = this.container.querySelector('.carousel-prev');
+            this.nextBtn = this.container.querySelector('.carousel-next');
+            this.indicatorsContainer = this.container.parentElement.querySelector('.carousel-indicators');
+
+            this.currentIndex = 0;
+            this.slidesPerView = this.getSlidesPerView();
+            this.totalSlides = this.slides.length;
+
+            this.init();
+        }
+
+        init() {
+            this.createIndicators();
+            this.updateCarousel();
+            this.bindEvents();
+            this.handleResize();
+        }
+
+        getSlidesPerView() {
+            if (window.innerWidth >= 960) return 3;
+            if (window.innerWidth >= 480) return 2;
+            return 1;
+        }
+
+        createIndicators() {
+            if (!this.indicatorsContainer) return;
+
+            const totalPages = Math.ceil(this.totalSlides / this.slidesPerView);
+            this.indicatorsContainer.innerHTML = '';
+
+            for (let i = 0; i < totalPages; i++) {
+                const indicator = document.createElement('button');
+                indicator.classList.add('carousel-indicator');
+                indicator.setAttribute('aria-label', `Go to slide group ${i + 1}`);
+                indicator.addEventListener('click', () => this.goToSlide(i * this.slidesPerView));
+                this.indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        updateCarousel() {
+            const slideWidth = 100 / this.slidesPerView;
+            const translateX = -(this.currentIndex * slideWidth);
+
+            this.track.style.transform = `translateX(${translateX}%)`;
+
+            // Update button states
+            if (this.prevBtn) this.prevBtn.disabled = this.currentIndex === 0;
+            if (this.nextBtn) this.nextBtn.disabled = this.currentIndex >= this.totalSlides - this.slidesPerView;
+
+            // Update indicators
+            this.updateIndicators();
+        }
+
+        updateIndicators() {
+            if (!this.indicatorsContainer) return;
+
+            const indicators = this.indicatorsContainer.querySelectorAll('.carousel-indicator');
+            const activeIndex = Math.floor(this.currentIndex / this.slidesPerView);
+
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        goToSlide(index) {
+            this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - this.slidesPerView));
+            this.updateCarousel();
+        }
+
+        nextSlide() {
+            if (this.currentIndex < this.totalSlides - this.slidesPerView) {
+                this.currentIndex += this.slidesPerView;
+                this.updateCarousel();
+            }
+        }
+
+        prevSlide() {
+            if (this.currentIndex > 0) {
+                this.currentIndex -= this.slidesPerView;
+                this.updateCarousel();
+            }
+        }
+
+        bindEvents() {
+            if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prevSlide());
+            if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+            // Keyboard navigation
+            this.container.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') this.prevSlide();
+                if (e.key === 'ArrowRight') this.nextSlide();
+            });
+
+            // Touch/swipe support
+            this.addTouchSupport();
+        }
+
+        addTouchSupport() {
+            let startX = 0;
+            let isDragging = false;
+
+            this.track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            this.track.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            }, { passive: false });
+
+            this.track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }, { passive: true });
+        }
+
+        handleResize() {
+            window.addEventListener('resize', () => {
+                const newSlidesPerView = this.getSlidesPerView();
+                if (newSlidesPerView !== this.slidesPerView) {
+                    this.slidesPerView = newSlidesPerView;
+                    this.currentIndex = 0;
+                    this.createIndicators();
+                    this.updateCarousel();
+                }
+            });
+        }
+    }
+
+    // Initialize all carousels when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Find all carousel containers and initialize them
+        const carouselContainers = document.querySelectorAll('.carousel-container');
+        carouselContainers.forEach(container => {
+            new ImprovedCarousel(`#${container.id}`);
+        });
+    });
+</script>
 
 {{ end }}
