@@ -2,28 +2,32 @@
 
 <div class="ph3 bg-off-white min-vh-100">
     <div class="center mw7 pv4">
+        <!-- Header Section -->
         <div class="tc pb4">
-            <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+            <h1 class="f2 b lh-title mb3 primary">{{ .Title }}</h1>
         </div>
 
+        <!-- Intro Section -->
         {{ if .Params.intro }}
-        <div class="tc pv4">
-            <p class="f3 lh-copy mw6 center">{{ .Params.intro }}</p>
+        <div class="tc pv3">
+            <p class="f4 lh-copy mw6 center gray">{{ .Params.intro }}</p>
         </div>
         {{ end }}
 
-        <div class="lh-copy measure center mb4">
+        <!-- Main Content -->
+        <div class="lh-copy measure center mb4 f5">
             {{ .Content }}
         </div>
 
+        <!-- Benefits Section -->
         {{ if .Params.benefits }}
-        <div class="pv4">
+        <div class="pv3">
             <div class="cf">
                 {{ range .Params.benefits }}
-                <div class="fl w-100 w-50-m w-third-l pa3">
-                    <div class="bg-white pa4 br2 ba b--light-gray tc" style="min-height: 200px;">
-                        <h3 class="f3 b lh-title mb3 primary">{{ .title }}</h3>
-                        <p class="f5 lh-copy gray">{{ .description }}</p>
+                <div class="fl w-100 w-50-m w-third-l pa2">
+                    <div class="pa3 tc" style="min-height: 160px;">
+                        <h3 class="f5 lh-title mb2 primary">{{ .title }}</h3>
+                        <p class="f6 lh-copy gray ma0">{{ .description }}</p>
                     </div>
                 </div>
                 {{ end }}
@@ -31,11 +35,35 @@
         </div>
         {{ end }}
 
-        <div class="tc pv5">
-            <h2 class="f2 b lh-title mb3">Ready to Participate?</h2>
-            <a href="/signup" class="bg-primary white f4 link br1 ph4 pv3 mb3 dib no-underline">
-                Get Started
-            </a>
+        <!-- Call to Action Section -->
+        <div class="tc pv3 mt3">
+            <div class="bg-white pa4 br2 ba b--light-gray">
+                <h2 class="f3 b lh-title mb3 primary">Ready to Participate?</h2>
+                <p class="f5 lh-copy gray mb4 mw5 center">
+                    Join our research programme and help advance understanding of workplace wellbeing and productivity.
+                </p>
+                <a href="/signup" class="bg-primary white f5 link br2 ph4 pv3 dib no-underline hover-bg-dark-blue">
+                    Get Started
+                </a>
+            </div>
+        </div>
+
+        <!-- Additional Information Section -->
+        <div class="pv3">
+            <div class="cf">
+                <div class="fl w-100 w-50-l pr3-l">
+                    <h3 class="f4 b lh-title mb3 primary">How It Works</h3>
+                    <p class="f5 lh-copy gray mb3">
+                        As a control employer, you'll maintain your current working schedule while participating in our research programme. This allows us to compare results and provides you with valuable insights into your workplace.
+                    </p>
+                </div>
+                <div class="fl w-100 w-50-l pl3-l">
+                    <h3 class="f4 b lh-title mb3 primary">Research Support</h3>
+                    <p class="f5 lh-copy gray mb3">
+                        You'll receive the same level of support and expertise as our 4-day week trial participants, including access to our research team and detailed reporting on your workplace metrics.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

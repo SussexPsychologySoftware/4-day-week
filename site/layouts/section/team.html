@@ -3,26 +3,29 @@
 <div class="ph3 bg-off-white min-vh-100">
     <div class="center mw7 pv4">
         <div class="tc pb4">
-            <h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+            <h1 class="f2 lh-title mb3 primary ttu">{{ .Title }}</h1>
         </div>
 
-        <div class="lh-copy measure center mb4">
+        <div class="lh-copy measure center mb4 f5">
             {{ .Content }}
         </div>
 
         {{ if .Params.team_members }}
-        <div class="pv4">
-            <div class="cf">
-                {{ range $index, $member := .Params.team_members }}
-                <div class="fl w-100 {{ if eq $index 0 }}{{ else }}w-50-m w-third-l{{ end }} pa3">
-                    <div class="bg-white pa4 br2 ba b--light-gray {{ if eq $index 0 }}tc{{ end }}" style="min-height: 250px;">
+        <div class="pv3">
+            {{ range $index, $member := .Params.team_members }}
+            {{ if eq $index 0 }}
+            <!-- Main team member (Charlotte) with image on left -->
+            <div class="mb4">
+                <div class="cf">
+                    <div class="fl w-100 w-25-l pr3-l mb3 mb0-l">
                         {{ if .photo }}
-                        <img src="{{ .photo }}" alt="{{ .name }}" class="w4 h4 br-100 db {{ if eq $index 0 }}center{{ end }} mb3" />
+                        <img src="{{ .photo }}" alt="{{ .name }}" class="w-100 br2 db" />
                         {{ end }}
-                        <h3 class="f3 b lh-title mb1 primary">{{ .name }}</h3>
-                        <h4 class="f4 gray mb2">{{ .role }}</h4>
-                        <p class="f5 lh-copy gray mb2">{{ .bio }}</p>
-                        <p class="f5 lh-copy gray mb2">{{ .bio }}</p>
+                    </div>
+                    <div class="fl w-100 w-75-l pl3-l">
+                        <h3 class="f3 lh-title mb1 primary">{{ .name }}</h3>
+                        <h4 class="f4 gray mb3">{{ .role }}</h4>
+                        <p class="f5 lh-copy gray mb3">{{ .bio }}</p>
                         {{ if .email }}
                         <p class="f6 mb2">Get in touch: <a href="mailto:{{ .email }}" class="link primary">{{ .email }}</a></p>
                         {{ end }}
@@ -31,8 +34,22 @@
                         {{ end }}
                     </div>
                 </div>
+            </div>
+            {{ else }}
+            <!-- Other team members arranged vertically -->
+            <div class="mb4">
+                <h3 class="f4 lh-title mb1 primary">{{ .name }}</h3>
+                <h4 class="f5 gray mb3">{{ .role }}</h4>
+                <p class="f5 lh-copy gray mb3">{{ .bio }}</p>
+                {{ if .email }}
+                <p class="f6 mb2">Get in touch: <a href="mailto:{{ .email }}" class="link primary">{{ .email }}</a></p>
+                {{ end }}
+                {{ if .research_link }}
+                <p class="f6"><a href="{{ .research_link }}" class="link primary">{{ .research_text }}</a></p>
                 {{ end }}
             </div>
+            {{ end }}
+            {{ end }}
         </div>
         {{ end }}
     </div>

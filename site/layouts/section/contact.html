@@ -4,27 +4,28 @@
 	<div class="center mw6 pv4">
 		<!-- Page Header -->
 		<div class="tc pb4">
-			<h1 class="f1 b lh-title mb3">{{ .Title }}</h1>
+			<h1 class="f2 lh-title mb3 primary ttu">{{ .Title }}</h1>
 		</div>
 
 		<!-- Contact Information -->
 		<div class="tc pv3">
 			{{ if .Params.email }}
 			<div class="mb4">
-				<p class="f3 b lh-title mb2 primary">Email: </p>
-				<a href="mailto:{{ .Params.email }}" class="f4 link primary">{{ .Params.email }}</a>
+				<p class="f5 lh-title mb2 black">
+					Email: <a href="mailto:{{ .Params.email }}" class="f5 link black">{{ .Params.email }}</a>
+				</p>
 			</div>
 			{{ end }}
 
 			{{ if .Params.instructions }}
 			<div class="mb4">
-				<p class="f4 lh-copy measure center">{{ .Params.instructions }}</p>
+				<p class="f5 lh-copy measure center black">{{ .Params.instructions }}</p>
 			</div>
 			{{ end }}
 		</div>
 
 		<!-- Page Content -->
-		<div class="lh-copy measure center mb4">
+		<div class="lh-copy measure center mb4 f5">
 			{{ .Content }}
 		</div>
 
